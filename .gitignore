@@ -1,0 +1,10 @@
+# ffmpeg 本地下载
+ffmpeg/
+ffmpeg.zip
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/

@@ -1,0 +1,9 @@
+# GPT-SoVITS 4GB 显存优化配置说明
+# 在 GPT-SoVITS 的 tts_infer.yaml 或启动参数中设置：
+#
+# batch_size: 1
+# is_half: true
+# 长文本分段：text_split_method: cut5
+#
+# 启动示例：
+# python api_v2.py -a 127.0.0.1 -p 9880 -c configs/tts_infer.yaml

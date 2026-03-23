@@ -1,6 +1,15 @@
+# API 凭证（严禁提交）
+credentials.txt
+
 # ffmpeg 本地下载
 ffmpeg/
 ffmpeg.zip
+
+# 大文件（超 GitHub 限制）
+【艾莉丝语音收录】.wav
+eris_full.wav
+【艾莉丝语音收录】.mp4
+【无职转生】艾莉丝·格雷拉特全语音台词收录.mp4
 
 # Python
 __pycache__/

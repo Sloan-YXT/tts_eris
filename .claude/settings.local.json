@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(nvidia-smi)",
+      "Bash(cat \"f:/programs/python/play/python/tts/tts_eris/voices/\"*/*.json)",
+      "Bash(wmic cpu:*)",
+      "Read(//proc/**)",
+      "Bash(python3 -c \"import torch; print\\(''PyTorch:'', torch.__version__\\); print\\(''CUDA available:'', torch.cuda.is_available\\(\\)\\); print\\(''CUDA version:'', torch.version.cuda\\); print\\(''GPU:'', torch.cuda.get_device_name\\(0\\) if torch.cuda.is_available\\(\\) else ''N/A''\\)\")",
+      "Bash(python -c \"import torch; print\\(''PyTorch:'', torch.__version__\\); print\\(''CUDA available:'', torch.cuda.is_available\\(\\)\\); print\\(''CUDA version:'', torch.version.cuda\\); print\\(''GPU:'', torch.cuda.get_device_name\\(0\\) if torch.cuda.is_available\\(\\) else ''N/A''\\)\")",
+      "Bash(powershell -Command '\\(Get-CimInstance Win32_ComputerSystem\\).TotalPhysicalMemory / 1GB')",
+      "Bash(head -3 \"f:/programs/python/play/python/tts/tts_eris/GPT-SoVITS/output/asr_opt/1/\"*.list)",
+      "Bash(\"f:/programs/python/play/python/tts/tts_eris/.venv/Scripts/python.exe\" -c \":*)",
+      "Bash(python -c \"import json; d=json.load\\(open\\(''f:/programs/python/play/python/tts/tts_eris/classification/emotion_clips.json'',''r'',encoding=''utf-8''\\)\\); print\\(f''{len\\(d\\)} 条标注''\\)\")",
+      "Bash(python -c \":*)",
+      "Bash(ls -lt f:/programs/python/play/python/tts/tts_eris/Style-BERT-VITS2/model_assets/eris/*.safetensors)",
+      "Bash(ls \"f:/programs/python/play/python/tts/tts_eris/Style-BERT-VITS2/model_assets/eris_v1_neutral/\"*.safetensors)"
+    ]
+  }
+}

@@ -1,10 +1,9 @@
 """
-多风格训练 Step 2: 重新预处理文本。
+多风格训练 Step 2: 重新预处理。
 
 由于 wav 文件路径改变（从 wavs/ 到 wavs/<emotion>/），
-需要重新运行 preprocess_text.py 生成新的 train.list 和 val.list。
-
-BERT 特征和 style 向量已随 wav 一起移动，无需重新生成。
+需要重新运行 preprocess_text.py 生成新的 train.list 和 val.list，
+然后运行 style_gen.py 为所有 wav 生成 style vector (.wav.npy)。
 """
 from __future__ import annotations
 
@@ -62,6 +61,23 @@ def main() -> None:
     if train_list.exists():
         sample = train_list.read_text(encoding="utf-8").splitlines()[0]
         print(f"  示例: {sample[:100]}...")
+
+    # 生成 style vector (.wav.npy)
+    print(f"\n运行 style_gen.py...")
+    cmd_style = [
+        PYTHON, "style_gen.py",
+        "--config", f"Data/{MODEL_NAME}/config.json",
+        "--num_processes", "1",
+    ]
+    result_style = subprocess.run(cmd_style, cwd=str(SBV2_DIR))
+    if result_style.returncode != 0:
+        print(f"\n[FAIL] style_gen.py 失败 (code={result_style.returncode})")
+        sys.exit(1)
+
+    # 验证 npy 生成
+    wavs_dir = DATA_DIR / "wavs"
+    npy_count = len(list(wavs_dir.rglob("*.wav.npy")))
+    print(f"  style vectors: {npy_count} 个 .wav.npy")
 
     print(f"\n{'='*60}")
     print(f"  Step 2 完成!")

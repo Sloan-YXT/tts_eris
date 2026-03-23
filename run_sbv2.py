@@ -37,8 +37,15 @@ import scipy.io.wavfile as wavfile
 import numpy as np
 
 
-def find_latest_model(assets_dir: Path) -> Path:
-    """按修改时间找到最新的 safetensors 模型。"""
+_sbv2_model_name: str | None = None  # 从配置读取，None 则自动选最新
+
+
+def _find_model(assets_dir: Path) -> Path:
+    if _sbv2_model_name:
+        p = assets_dir / _sbv2_model_name
+        if p.exists():
+            return p
+        raise FileNotFoundError(f"指定模型不存在: {p}")
     models = sorted(assets_dir.glob("eris_e*_s*.safetensors"), key=lambda p: p.stat().st_mtime)
     if not models:
         raise FileNotFoundError(f"未找到训练模型: {assets_dir}")
@@ -54,7 +61,7 @@ def get_model():
     global _tts_model
     if _tts_model is None:
         from style_bert_vits2.tts_model import TTSModel
-        model_path = find_latest_model(ASSETS_DIR)
+        model_path = _find_model(ASSETS_DIR)
         config_path = ASSETS_DIR / "config.json"
         style_vec_path = ASSETS_DIR / "style_vectors.npy"
         print(f"加载模型: {model_path.name}")
@@ -97,8 +104,23 @@ def _synthesize(text: str, style: str, style_weight: float, language: str,
 
 from contextlib import asynccontextmanager
 
+def _load_config_model_name():
+    global _sbv2_model_name
+    cfg_path = ROOT / "run_with_class_config.txt"
+    if cfg_path.exists():
+        for line in cfg_path.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if line.startswith("#") or "=" not in line:
+                continue
+            k, _, v = line.partition("=")
+            if k.strip() == "sbv2_model" and v.strip():
+                _sbv2_model_name = v.strip()
+                break
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    _load_config_model_name()
     print("预加载 SBV2 模型...")
     loop = asyncio.get_event_loop()
     await loop.run_in_executor(None, get_model)

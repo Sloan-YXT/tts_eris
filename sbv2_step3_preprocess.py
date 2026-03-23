@@ -44,10 +44,27 @@ def create_config() -> None:
     config["data"]["n_speakers"] = 1
     config["data"]["spk2id"] = {MODEL_NAME: 0}
 
-    config["train"]["batch_size"] = 4
-    config["train"]["epochs"] = 100
-    config["train"]["eval_interval"] = 500
+    # 根据数据量动态调参
+    wavs_dir = DATA_DIR / "raw"
+    n_samples = len(list(wavs_dir.glob("*.wav"))) if wavs_dir.exists() else 0
+
+    if n_samples > 500:
+        # 大数据集（>500条/~30min+）：大 batch，少 epoch，更密集 eval
+        batch_size = 8
+        epochs = 60
+        eval_interval = 300
+    else:
+        # 小数据集：小 batch，多 epoch
+        batch_size = 4
+        epochs = 100
+        eval_interval = 500
+
+    config["train"]["batch_size"] = batch_size
+    config["train"]["epochs"] = epochs
+    config["train"]["eval_interval"] = eval_interval
     config["train"]["bf16_run"] = True
+
+    print(f"  数据量: {n_samples} 条 → batch_size={batch_size}, epochs={epochs}")
 
     dst.write_text(json.dumps(config, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"训练配置已创建: {dst}")
@@ -87,6 +104,13 @@ def main() -> None:
         "--num-processes", "1",
         "--device", "cuda",
     ], "3c. 生成 BERT 特征")
+
+    # 3d. Style Vector
+    run([
+        PYTHON, "style_gen.py",
+        "--config", f"Data/{MODEL_NAME}/config.json",
+        "--num_processes", "1",
+    ], "3d. 生成 Style Vector (.wav.npy)")
 
     print(f"\n{'='*60}")
     print(f"  预处理全部完成!")

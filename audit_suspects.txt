@@ -1,0 +1,34 @@
+可疑片段: 31/961
+阈值: 时长 0.8-18.0s, SNR>5.0dB, 语音>30%, RMS>-40.0dB
+
+1/vocal_eris_full.wav.reformatted.wav_10.wav_0018896960_0019021440  |  语音占比低 0%  |  ルイゼル
+1/vocal_eris_full.wav.reformatted.wav_10.wav_0024736640_0024826560  |  语音占比低 0%  |  うわぁ、すごい!
+1/vocal_eris_full.wav.reformatted.wav_10.wav_0025086400_0025222080  |  语音占比低 0%  |  
+1/vocal_eris_full.wav.reformatted.wav_10.wav_0032154880_0032244160  |  语音占比低 0%  |  
+1/vocal_eris_full.wav.reformatted.wav_10.wav_0032392960_0032494400  |  语音占比低 0%  |  話しなさいよ
+2/vocal_17分钟无职转生艾丽丝人声.wav.reformatted.wav_10.wav_0000000000_0000124480  |  语音占比低 0%  |  お話ししていただき
+2/vocal_17分钟无职转生艾丽丝人声.wav.reformatted.wav_10.wav_0000778560_0000889920  |  语音占比低 0%  |  にゃあああああ
+2/vocal_17分钟无职转生艾丽丝人声.wav.reformatted.wav_10.wav_0002323520_0002369600  |  语音占比低 0%  |  そういうことよ
+2/vocal_17分钟无职转生艾丽丝人声.wav.reformatted.wav_10.wav_0002673920_0002776000  |  语音占比低 0%  |  
+2/vocal_17分钟无职转生艾丽丝人声.wav.reformatted.wav_10.wav_0014703680_0014777920  |  语音占比低 0%  |  
+2/vocal_17分钟无职转生艾丽丝人声.wav.reformatted.wav_10.wav_0015506880_0015641280  |  语音占比低 0%  |  
+2/vocal_17分钟无职转生艾丽丝人声.wav.reformatted.wav_10.wav_0015807680_0015899520  |  语音占比低 0%  |  ギレーヌはすごいんだから
+2/vocal_17分钟无职转生艾丽丝人声.wav.reformatted.wav_10.wav_0023669760_0023816320  |  语音占比低 0%  |  
+2/vocal_17分钟无职转生艾丽丝人声.wav.reformatted.wav_10.wav_0023816320_0023923200  |  语音占比低 0%  |  
+2/vocal_17分钟无职转生艾丽丝人声.wav.reformatted.wav_10.wav_0024897920_0024997120  |  语音占比低 0%  |  
+2/vocal_17分钟无职转生艾丽丝人声.wav.reformatted.wav_10.wav_0029149440_0029220800  |  语音占比低 0%  |  
+2/vocal_17分钟无职转生艾丽丝人声.wav.reformatted.wav_10.wav_0029778880_0029881600  |  语音占比低 0%  |  
+3/vocal_艾莉丝语音收录.wav.reformatted.wav_10.wav_0002815360_0002925440  |  语音占比低 0%  |  にゃあああああ
+3/vocal_艾莉丝语音收录.wav.reformatted.wav_10.wav_0007946880_0008067840  |  语音占比低 0%  |  お疲れ様でした
+3/vocal_艾莉丝语音收录.wav.reformatted.wav_10.wav_0014532480_0014624320  |  语音占比低 0%  |  
+3/vocal_艾莉丝语音收录.wav.reformatted.wav_10.wav_0015158400_0015296000  |  语音占比低 0%  |  
+3/vocal_艾莉丝语音收录.wav.reformatted.wav_10.wav_0016015360_0016127680  |  语音占比低 0%  |  変なの
+3/vocal_艾莉丝语音收录.wav.reformatted.wav_10.wav_0016627840_0016683520  |  语音占比低 0%  |  ああああああ
+3/vocal_艾莉丝语音收录.wav.reformatted.wav_10.wav_0021774080_0021892160  |  语音占比低 0%  |  
+3/vocal_艾莉丝语音收录.wav.reformatted.wav_10.wav_0026364480_0026456000  |  语音占比低 0%  |  イレーヌはすごいんだから
+3/vocal_艾莉丝语音收录.wav.reformatted.wav_10.wav_0031954560_0032070080  |  语音占比低 0%  |  
+3/vocal_艾莉丝语音收录.wav.reformatted.wav_10.wav_0032070080_0032217920  |  语音占比低 0%  |  そんなはずないなんで久しぶりなんでしょ
+3/vocal_艾莉丝语音收录.wav.reformatted.wav_10.wav_0033476480_0033577600  |  语音占比低 0%  |  ちょっと話しなさいよ
+3/vocal_艾莉丝语音收录.wav.reformatted.wav_10.wav_0036036800_0036135040  |  语音占比低 0%  |  いってらっしゃいるーで
+3/vocal_艾莉丝语音收录.wav.reformatted.wav_10.wav_0039977920_0040124800  |  语音占比低 0%  |  
+3/vocal_艾莉丝语音收录.wav.reformatted.wav_10.wav_0040124800_0040228480  |  语音占比低 0%  |  

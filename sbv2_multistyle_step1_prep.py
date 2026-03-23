@@ -36,6 +36,40 @@ def backup_model() -> None:
     print(f"  已备份: {src.name} → {dst.name}")
 
 
+def build_wav_to_emotion(clips: dict) -> dict[str, str]:
+    """从 emotion_clips.json 建立 wav 文件名（0001.wav）→ 情绪 映射。
+
+    clips 的 key 是 clip_id（子目录/stem 格式，如 "1/vocal_eris_full..._0000148480"），
+    但 wavs/ 下的文件名是 sbv2_step2_prepare_data.py 生成的序号（如 "0001.wav"）。
+    通过 esd.list 建立序号 → clip_id 的反向映射来关联。
+    """
+    # 读 esd.list 获取 wav 文件名 → 台词 映射
+    esd_path = DATA_DIR / "esd.list"
+    if not esd_path.exists():
+        return {}
+
+    # clip_id 的台词 → clip_id 映射（用台词做中间桥梁）
+    transcript_to_clip: dict[str, str] = {}
+    for clip_id, ann in clips.items():
+        t = ann.get("transcript", "").strip()
+        if t:
+            transcript_to_clip[t] = clip_id
+
+    # esd.list: Data/eris/wavs/0001.wav|eris|JP|台词
+    wav_to_emotion: dict[str, str] = {}
+    for line in esd_path.read_text(encoding="utf-8").splitlines():
+        parts = line.split("|")
+        if len(parts) < 4:
+            continue
+        wav_name = Path(parts[0]).name  # 0001.wav
+        transcript = parts[3].strip()
+        clip_id = transcript_to_clip.get(transcript)
+        if clip_id and clip_id in clips:
+            wav_to_emotion[wav_name] = clips[clip_id]["emotion"]
+
+    return wav_to_emotion
+
+
 def reorganize_wavs(clips: dict) -> dict[str, int]:
     """将 wav 及关联文件按情绪移入子目录。返回每个情绪的文件数。"""
     counts: dict[str, int] = {e: 0 for e in EMOTIONS}
@@ -44,11 +78,13 @@ def reorganize_wavs(clips: dict) -> dict[str, int]:
     for emotion in EMOTIONS:
         (WAVS_DIR / emotion).mkdir(exist_ok=True)
 
-    # 检查是否已经分好了
-    flat_wavs = list(WAVS_DIR.glob("eris_avl_*.wav"))
+    # 获取 wav → emotion 映射
+    wav_to_emotion = build_wav_to_emotion(clips)
+
+    # 检查是否有平铺 wav（排除子目录中的）
+    flat_wavs = [f for f in sorted(WAVS_DIR.glob("*.wav")) if f.parent == WAVS_DIR]
     if not flat_wavs:
         print("  wavs 目录下无平铺 wav 文件，可能已经分好了")
-        # 统计子目录
         for emotion in EMOTIONS:
             counts[emotion] = len(list((WAVS_DIR / emotion).glob("*.wav")))
         return counts
@@ -56,29 +92,25 @@ def reorganize_wavs(clips: dict) -> dict[str, int]:
     # 移动文件
     moved = 0
     missing_label = []
-    for wav in sorted(flat_wavs):
-        stem = wav.stem  # eris_avl_001
-        clip_info = clips.get(stem)
-        if not clip_info:
-            missing_label.append(stem)
-            continue
+    for wav in flat_wavs:
+        emotion = wav_to_emotion.get(wav.name)
+        if not emotion:
+            missing_label.append(wav.name)
+            emotion = "neutral"
 
-        emotion = clip_info["emotion"]
         if emotion not in EMOTIONS:
-            print(f"  [warn] 未知情绪 '{emotion}' for {stem}, 归入 neutral")
+            print(f"  [warn] 未知情绪 '{emotion}' for {wav.name}, 归入 neutral")
             emotion = "neutral"
 
         dst_dir = WAVS_DIR / emotion
 
         # 移动 wav 及所有关联文件
-        # .npy 文件格式: stem.wav.npy (含 .wav)
-        # .bert.pt/.spec.pt 格式: stem.bert.pt (不含 .wav)
         for suffix in ["", ".npy"]:
             src_file = WAVS_DIR / f"{wav.name}{suffix}"
             if src_file.exists():
                 shutil.move(str(src_file), str(dst_dir / src_file.name))
         for suffix in [".bert.pt", ".spec.pt"]:
-            src_file = WAVS_DIR / f"{stem}{suffix}"
+            src_file = WAVS_DIR / f"{wav.stem}{suffix}"
             if src_file.exists():
                 shutil.move(str(src_file), str(dst_dir / src_file.name))
 
@@ -86,29 +118,35 @@ def reorganize_wavs(clips: dict) -> dict[str, int]:
         moved += 1
 
     if missing_label:
-        print(f"  [warn] {len(missing_label)} 个文件无情绪标签: {missing_label[:5]}...")
+        print(f"  [warn] {len(missing_label)} 个文件无情绪标签，归入 neutral")
 
     print(f"  已移动 {moved} 组文件")
     return counts
 
 
-def regenerate_esd_list(clips: dict) -> int:
-    """根据子目录结构重新生成 esd.list。"""
+def regenerate_esd_list() -> int:
+    """根据子目录结构重新生成 esd.list，从旧 esd.list 读台词。"""
+    # 先读旧 esd.list 建立 wav 文件名 → 台词映射
+    esd_path = DATA_DIR / "esd.list"
+    old_transcripts: dict[str, str] = {}
+    if esd_path.exists():
+        for line in esd_path.read_text(encoding="utf-8").splitlines():
+            parts = line.split("|")
+            if len(parts) >= 4:
+                old_transcripts[Path(parts[0]).name] = parts[3]
+
     lines = []
     for emotion in EMOTIONS:
         emo_dir = WAVS_DIR / emotion
         for wav in sorted(emo_dir.glob("*.wav")):
-            if wav.name.endswith(".wav") and not wav.name.endswith(".spec.wav"):
-                stem = wav.stem
-                clip_info = clips.get(stem, {})
-                transcript = clip_info.get("transcript", "")
-                if not transcript:
-                    continue
-                # 相对于 SBV2_DIR 的路径
-                rel_path = wav.relative_to(SBV2_DIR).as_posix()
-                lines.append(f"{rel_path}|eris|JP|{transcript}")
+            if wav.name.endswith(".spec.wav"):
+                continue
+            transcript = old_transcripts.get(wav.name, "")
+            if not transcript:
+                continue
+            rel_path = wav.relative_to(SBV2_DIR).as_posix()
+            lines.append(f"{rel_path}|eris|JP|{transcript}")
 
-    esd_path = DATA_DIR / "esd.list"
     esd_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"  已生成 esd.list: {len(lines)} 条")
     return len(lines)
@@ -139,7 +177,7 @@ def main() -> None:
 
     # 3. 重新生成 esd.list
     print(f"\n[3/3] 重新生成 esd.list...")
-    regenerate_esd_list(clips)
+    regenerate_esd_list()
 
     print(f"\n{'='*60}")
     print(f"  Step 1 完成!")

@@ -1,5 +1,6 @@
 # API 凭证（严禁提交）
 credentials.txt
+run_with_class_config.txt
 
 # ffmpeg 本地下载
 ffmpeg/

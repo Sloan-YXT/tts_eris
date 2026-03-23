@@ -96,9 +96,15 @@ def detect_emotion(text: str, client: OpenAI, model: str) -> str:
 # ── SBV2 直接合成 ────────────────────────────────────────────────────────────
 
 _tts_model = None
+_sbv2_model_name: str | None = None  # 从配置读取，None 则自动选最新
 
 
-def _find_latest_model(assets_dir: Path) -> Path:
+def _find_model(assets_dir: Path) -> Path:
+    if _sbv2_model_name:
+        p = assets_dir / _sbv2_model_name
+        if p.exists():
+            return p
+        raise FileNotFoundError(f"指定模型不存在: {p}")
     models = sorted(assets_dir.glob("eris_e*_s*.safetensors"), key=lambda p: p.stat().st_mtime)
     if not models:
         raise FileNotFoundError(f"未找到训练模型: {assets_dir}")
@@ -109,7 +115,7 @@ def _get_model():
     global _tts_model
     if _tts_model is None:
         from style_bert_vits2.tts_model import TTSModel
-        model_path = _find_latest_model(ASSETS_DIR)
+        model_path = _find_model(ASSETS_DIR)
         config_path = ASSETS_DIR / "config.json"
         style_vec_path = ASSETS_DIR / "style_vectors.npy"
         print(f"加载模型: {model_path.name}")
@@ -200,6 +206,8 @@ async def lifespan(app: FastAPI):
     )
 
     if _BACKEND_MODE == "sbv2":
+        global _sbv2_model_name
+        _sbv2_model_name = cfg.get("sbv2_model") or None
         print("后端: SBV2 (直接加载模型)")
         print("预加载模型...")
         loop = asyncio.get_event_loop()

@@ -43,13 +43,13 @@ from pydantic import BaseModel, Field
 EMOTION_LABELS = ["neutral", "gentle", "serious", "confident", "surprised", "happy", "sad"]
 
 EMOTION_PARAMS: dict[str, dict] = {
-    "neutral":   {"sdp_ratio": 0.2, "noise": 0.6, "noise_w": 0.8, "length": 1.0,  "style_weight": 1.0},
-    "gentle":    {"sdp_ratio": 0.2, "noise": 0.4, "noise_w": 0.6, "length": 1.1,  "style_weight": 1.0},
-    "serious":   {"sdp_ratio": 0.1, "noise": 0.4, "noise_w": 0.4, "length": 1.0,  "style_weight": 1.0},
-    "confident": {"sdp_ratio": 0.3, "noise": 0.5, "noise_w": 0.7, "length": 0.95, "style_weight": 1.0},
-    "surprised": {"sdp_ratio": 0.5, "noise": 0.8, "noise_w": 1.0, "length": 0.9,  "style_weight": 1.0},
-    "happy":     {"sdp_ratio": 0.4, "noise": 0.7, "noise_w": 0.9, "length": 0.95, "style_weight": 1.0},
-    "sad":       {"sdp_ratio": 0.3, "noise": 0.5, "noise_w": 0.6, "length": 1.15, "style_weight": 1.0},
+    "neutral":   {"sdp_ratio": 0.2, "noise": 0.6, "noise_w": 0.8, "length": 1.1,  "style_weight": 1.0},
+    "gentle":    {"sdp_ratio": 0.2, "noise": 0.4, "noise_w": 0.6, "length": 1.2,  "style_weight": 1.0},
+    "serious":   {"sdp_ratio": 0.1, "noise": 0.4, "noise_w": 0.4, "length": 1.1,  "style_weight": 1.0},
+    "confident": {"sdp_ratio": 0.3, "noise": 0.5, "noise_w": 0.7, "length": 1.05, "style_weight": 1.0},
+    "surprised": {"sdp_ratio": 0.5, "noise": 0.8, "noise_w": 1.0, "length": 1.0,  "style_weight": 1.0},
+    "happy":     {"sdp_ratio": 0.4, "noise": 0.7, "noise_w": 0.9, "length": 1.05, "style_weight": 1.0},
+    "sad":       {"sdp_ratio": 0.3, "noise": 0.5, "noise_w": 0.6, "length": 1.25, "style_weight": 1.0},
 }
 
 
@@ -204,7 +204,9 @@ async def lifespan(app: FastAPI):
         print("预加载模型...")
         loop = asyncio.get_event_loop()
         await loop.run_in_executor(None, _get_model)
-        print("模型加载完成")
+        print("模型加载完成，预热 BERT...")
+        await loop.run_in_executor(None, _synthesize_sbv2, "テスト", "ja", "neutral")
+        print("BERT 预热完成")
     else:
         from src.voice_catalog import load_catalog
         app.state.catalog = load_catalog()

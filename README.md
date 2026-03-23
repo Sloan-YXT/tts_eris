@@ -49,17 +49,22 @@ cd GPT-SoVITS
 
 ### 训练
 
-需要 `credentials.txt` 配置 Gemini API Key（情绪标注用）：
+两种训练模式：
+
+```bash
+python train_all.py           # 多风格训练（7 种情绪，需要 Gemini API）
+python train_all.py --basic   # 单风格训练（无需 Gemini API）
+```
+
+**多风格训练**需要 `credentials.txt` 配置 Gemini API Key（自动情绪标注）：
 
 ```json
 {"gemini": {"api_key": "AIza...", "model": "models/gemini-2.5-flash-lite"}}
 ```
 
-```bash
-python train_all.py
-```
+多风格自动完成 6 步：数据整理 → 预处理（重采样 + BERT 特征）→ Gemini 情绪标注 → 按情绪分组 → 多风格预处理 → 训练（~40 分钟）。
 
-自动完成 6 步：数据整理 → 预处理（重采样 + BERT 特征）→ Gemini 情绪标注 → 按情绪分组 → 多风格预处理 → 训练（~40 分钟）。
+单风格（`--basic`）跳过情绪标注，只跑 3 步：数据整理 → 预处理 → 训练。
 
 ### 部署
 

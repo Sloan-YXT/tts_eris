@@ -1,219 +1,192 @@
-# GPT-SoVITS 音色克隆 TTS API
+# Eris TTS — 多风格语音合成
 
-基于 GPT-SoVITS 的文本转语音 API，支持零样本音色克隆，可扩展多角色音色。
+支持两种后端：**Style-BERT-VITS2 (SBV2)** 和 **GPT-SoVITS**。
 
-## 环境要求
+## 前提
 
-- Python 3.10+
-- **ffmpeg**：视频转音频需安装。可运行 `python scripts/setup_ffmpeg.py` 下载到项目 `ffmpeg/` 目录
-- **GPT-SoVITS**：需单独安装并启动 API 服务（见下方）
-- 推荐 GPU：6GB+ 显存；4GB 需按说明优化
+- Windows 10/11, Python 3.10, NVIDIA GPU (VRAM >= 8GB)
+- [Visual C++ Redistributable 2015–2022 x64](https://aka.ms/vs/17/release/vc_redist.x64.exe)
+- Conda（pyopenjtalk 编译需要 MinGW 工具链）
 
-### 安装 GPT-SoVITS
-
-1. 克隆官方仓库：
-   ```bash
-   git clone https://github.com/RVC-Boss/GPT-SoVITS.git
-   cd GPT-SoVITS
-   ```
-
-2. 安装依赖（含 PyTorch CUDA 12.x）：
-   ```bash
-   pip install -r requirements.txt
-   # 或按官方文档安装 PyTorch
-   ```
-
-3. 下载预训练模型到 `GPT_SoVITS/pretrained_models/`：
-   ```bash
-   # 在 tts 项目下运行（将路径改为你的 GPT-SoVITS 克隆位置）
-   python scripts/setup_gpt_sovits_models.py D:\GPT-SoVITS
-   ```
-   或手动从 [HuggingFace](https://huggingface.co/lj1995/GPT-SoVITS) 下载以下内容到 `GPT_SoVITS/pretrained_models/`：
-   - `chinese-roberta-wwm-ext-large`（BERT 中文文本编码，约 620MB）
-   - `chinese-hubert-base`（HuBERT 语音编码，约 180MB）
-   - `gsv-v2final-pretrained`（v2 预训练，含 s1/s2 模型）
-
-4. 4GB 显存优化：在 `configs/tts_infer.yaml` 中设置：
-   - `batch_size: 1`
-   - `is_half: true`
-   - `text_split_method: cut5`
-
-5. 启动 GPT-SoVITS 推理 API（二选一）：
-   - **本仓库内一键安装**：进入 `GPT-SoVITS` 目录，双击 `run_api.bat`（会自动用 conda 环境并监听 9880）
-   - **手动**：在 GPT-SoVITS 根目录下，用其 conda 环境执行：
-     ```bash
-     python api_v2.py -a 127.0.0.1 -p 9880 -c GPT_SoVITS/configs/tts_infer.yaml
-     ```
-
-### 安装本 TTS API
+## 1. 安装
 
 ```bash
-cd tts
-pip install -r requirements.txt
-python scripts/setup_ffmpeg.py   # 下载 ffmpeg 到项目 ffmpeg/ 目录
+git clone https://github.com/litagin02/Style-BERT-VITS2.git
+git clone https://github.com/RVC-Boss/GPT-SoVITS.git
+python install.py
 ```
 
-## 启动
+`install.py` 一次性安装**两种模式的全部依赖**：
 
-1. 确保 GPT-SoVITS API 已在 9880 端口运行
-2. 启动本服务：
-   ```bash
-   python run.py
-   ```
-   或：`uvicorn src.main:app --host 0.0.0.0 --port 8000`
+1. 创建 `.venv`（自动定位 Python 3.10）
+2. PyTorch 2.10 + CUDA 12.8
+3. GPT-SoVITS 全部依赖（含 pyopenjtalk MinGW 编译、ffmpeg DLL、预训练模型）
+4. SBV2 全部依赖（BERT 模型、JP-Extra 底模、SLM 模型）
 
-3. 访问 http://localhost:8000/docs 查看 API 文档
+首次运行总下载约 8-10GB。重复运行安全（已有文件跳过）。
 
-## 用「配置文件 + 推理 API」按请求获取语音
+## 2. 数据准备
 
-按下面四步即可：填好配置、启动推理服务，通过 HTTP 请求拿语音。
-
-1. **新建一个音色目录**（例如 `voices/my_voice`），放入：
-   - **reference.wav**：约 5–10 秒的参考语音（WAV，16kHz/24kHz、16bit，尽量安静）
-   - **config.json**：内容示例：
-     ```json
-     {
-       "prompt_text": "这里填参考音频里说的那句话的原文",
-       "prompt_language": "zh",
-       "text_language": "zh",
-       "speed": 1.0
-     }
-     ```
-     - `prompt_text`：参考音频的转写/原文（需与 reference.wav 内容一致）
-     - `prompt_language` / `text_language`：`zh` 中文、`ja` 日语、`en` 英语等
-
-2. **启动 GPT-SoVITS 推理服务**（9880）  
-   进入 `GPT-SoVITS` 目录，双击 `run_api.bat`；或在该目录下用其 conda 环境执行：
-   ```bash
-   python api_v2.py -a 127.0.0.1 -p 9880 -c GPT_SoVITS/configs/tts_infer.yaml
-   ```
-
-3. **启动本 TTS 服务**（8000）  
-   在**本仓库根目录**（tts）执行：
-   ```bash
-   python run.py
-   ```
-
-4. **按请求获取语音**  
-   - 浏览器或 GET：`http://localhost:8000/tts?text=要合成的内容&voice_id=my_voice`  
-   - 或 POST：`POST /tts`，Body：`{"text": "要合成的内容", "voice_id": "my_voice"}`  
-   返回为 WAV 音频流。
-
-## 素材规范（艾莉丝等角色）
-
-### 参考音频要求
-
-- 格式：WAV
-- 采样率：16kHz 或 24kHz
-- 位深：16bit
-- 时长：5–60 秒（零样本推荐 5–10 秒）
-- 环境：尽量安静，背景噪音小
-
-### 视频转音频 Helper
-
-从链接或本地视频提取音频，生成 MP3 和 GPT-SoVITS 所需的 WAV：
+用 GPT-SoVITS WebUI 完成音频切片和 ASR 标注：
 
 ```bash
-# 首次使用可运行: python scripts/setup_ffmpeg.py 下载 ffmpeg 到项目目录
-# 从 URL 下载并提取
-python scripts/video_to_audio.py "https://www.bilibili.com/video/xxx" -o output/
-
-# 从本地视频提取
-python scripts/video_to_audio.py path/to/video.mp4 -o output/
-
-# 仅生成 WAV，并截取前 10 秒（适合做参考音频）
-python scripts/video_to_audio.py video.mp4 --wav-only --max-duration 10 -o voices/eris/
+cd GPT-SoVITS
+..\.venv\Scripts\python webui.py
 ```
 
-输出 WAV 为 24kHz、16bit、单声道，符合 GPT-SoVITS 参考音频要求。
+在 WebUI 中依次完成：
 
-### WAV 按时间范围剪辑
+1. **UVR5 人声分离** — 模型 `HP5_only_main_vocal` 去背景音乐，再用 `VR-DeEchoAggressive` 去混响
+2. **音频切片** — 阈值 -34dB，最小片段 4000ms，输出到 `output/slicer_opt/`
+3. **ASR 标注** — `faster-whisper` + `large-v3`，语言 `ja`，输出 `output/asr_opt/*.list`
+4. **清理标注** — 删除 `instrument_` 开头的行（乐器轨道）
 
-指定起止时间截取音频片段（支持 WAV/MP4/MP3 输入）：
+切片结果存入 `voices/eris_avl_*/`，每个目录包含 `reference.wav` + `config.json`（含 `prompt_text` 台词）。
+
+---
+
+## SBV2 模式
+
+### 训练
+
+需要 `credentials.txt` 配置 Gemini API Key（情绪标注用）：
+
+```json
+{"gemini": {"api_key": "AIza...", "model": "models/gemini-2.5-flash-lite"}}
+```
 
 ```bash
-python scripts/clip_wav.py 输入.wav -s 1 -e 10 -o voices/eris/reference.wav
-# -s/--start: 起始秒数
-# -e/--end: 结束秒数
-# -o/--output: 输出路径
+python train_all.py
 ```
 
-### 艾莉丝音色准备
+自动完成 6 步：数据整理 → 预处理（重采样 + BERT 特征）→ Gemini 情绪标注 → 按情绪分组 → 多风格预处理 → 训练（~40 分钟）。
 
-1. 从动画《无职转生》中提取艾莉丝·伯雷亚斯·格雷拉特的对白片段（可用上述 video_to_audio 从视频提取）
-2. 使用剪辑软件或 ffmpeg 导出为 WAV
-3. （可选）预处理：静音切除、音量标准化：
-   ```bash
-   python scripts/preprocess_audio.py path/to/raw.wav -o voices/eris/reference.wav
-   ```
-4. 将文件保存为 `voices/eris/reference.wav`
-5. 编辑 `voices/eris/config.json`，填写 `prompt_text`（参考音频的转写文本）。艾莉丝为日语角色，`prompt_language` 与 `text_language` 已设为 `ja`
-
-### 预处理脚本用法
+### 部署
 
 ```bash
-python scripts/preprocess_audio.py 输入.wav -o 输出.wav
-# 可选参数：
-#   --top-db 25    静音切除阈值（默认 25）
-#   --target-db -20  目标音量 dB（默认 -20）
+python run.py                      # 手动指定风格，端口 8010
+python run_with_class.py           # 自动情绪检测，端口 8092
 ```
 
-## API 使用
+两个服务独立运行，各自直接加载模型，无外部依赖。首次启动加载 BERT 模型约 2 分钟。
 
-### POST /tts
+`run_with_class.py` 需在 `run_with_class_config.txt` 中配置 `deepseek_api_key`。
+
+### 请求
+
+```bash
+# run.py — 手动指定风格
+curl -X POST http://localhost:8010/tts \
+  -H "Content-Type: application/json" \
+  -d '{"text": "どうして私を置いていくの？", "style": "sad"}' \
+  -o output.wav
+
+# run_with_class.py — 自动检测情绪
+curl -X POST http://localhost:8092/tts \
+  -H "Content-Type: application/json" \
+  -d '{"text": "やったー！"}' \
+  -o output.wav
+
+# 手动指定情绪
+curl -X POST http://localhost:8092/tts \
+  -H "Content-Type: application/json" \
+  -d '{"text": "やったー！", "emotion": "happy"}' \
+  -o output.wav
+```
+
+可用风格/情绪：`neutral`, `gentle`, `serious`, `confident`, `surprised`, `happy`, `sad`
+
+---
+
+## GPT-SoVITS 模式
+
+### Windows 训练补丁
+
+GPT-SoVITS 在 Windows 单 GPU 下训练需要手动修改以下文件（gloo 后端不可用）：
+
+**`GPT_SoVITS/s2_train.py`** — gloo 无法解析主机名 + 单 GPU DDP 问题：
+- `MASTER_ADDR` 改为 `"127.0.0.1"`
+- 单 GPU (`n_gpus == 1`) 时直接调用 `run(0, 1, hps)` 跳过 `mp.spawn`
+- `dist.init_process_group()` 仅在 `n_gpus > 1` 时调用
+- DDP 包装仅在 `n_gpus > 1` 时启用
+- `generator.module.infer(...)` 改用 `hasattr` 判断是否被 DDP 包装
+
+**`GPT_SoVITS/s1_train.py`** — gloo + DDP 策略：
+- `MASTER_ADDR` 改为 `"127.0.0.1"`
+- Trainer 改为 `devices=1, strategy="auto"`
+
+**`GPT_SoVITS/AR/data/bucket_sampler.py`** — dist 未初始化：
+- `dist.get_world_size()` 和 `dist.get_rank()` 前加 `dist.is_initialized()` 判断
+
+### 训练
+
+```bash
+python train.py
+```
+
+自动完成：合并标注 → 文本分词 → HuBERT 特征 → 语义 Token → SoVITS 训练 → GPT 训练。
+
+训练完成后在 `voices/eris/config.json` 中填入模型路径：
 
 ```json
 {
-  "text": "要合成的文本（日语角色请用日文）",
-  "voice_id": "eris"
+  "prompt_text": "台词原文",
+  "prompt_language": "ja",
+  "text_language": "ja",
+  "speed": 1.0,
+  "gpt_model": "GPT_weights_v2Pro/eris-e50.ckpt",
+  "sovits_model": "SoVITS_weights_v2Pro/eris_e20_s1520.pth"
 }
 ```
 
-返回：WAV 音频流（`Content-Type: audio/wav`）
+### 部署
 
-### GET /tts
+先启动 GPT-SoVITS 推理后端，再启动本项目服务：
 
+```bash
+# 终端 1 — GPT-SoVITS 推理引擎
+cd GPT-SoVITS
+..\.venv\Scripts\python api_v2.py -a 127.0.0.1 -p 9880
+
+# 终端 2 — 本项目服务
+python run.py gsv                  # 手动指定音色，端口 8010
+python run_with_class.py gsv       # 自动情绪检测，端口 8092
 ```
-GET /tts?text=要合成的文本&voice_id=eris
+
+`run_with_class.py gsv` 通过 `classification/emotion_map.json` 将情绪映射到对应的 voice_id。
+
+### 请求
+
+```bash
+# run.py gsv — 指定音色
+curl -X POST http://localhost:8010/tts \
+  -H "Content-Type: application/json" \
+  -d '{"text": "どうして私を置いていくの？", "voice_id": "eris_avl_006"}' \
+  -o output.wav
+
+# run_with_class.py gsv — 自动检测情绪 → 选择音色
+curl -X POST http://localhost:8092/tts \
+  -H "Content-Type: application/json" \
+  -d '{"text": "やったー！"}' \
+  -o output.wav
 ```
 
-### 环境变量
+---
 
-- `GPT_SOVITS_API_URL`：GPT-SoVITS API 地址，默认 `http://127.0.0.1:9880`
+## 配置文件
 
-## 新增音色
+`run_with_class_config.txt`（情绪路由，两种模式共用）：
 
-在 `voices/` 下新建目录，例如 `voices/roxy/`：
-
-1. 放入 `reference.wav`
-2. 创建 `config.json`：
-   ```json
-   {
-     "prompt_text": "参考音频的转写文本",
-     "prompt_language": "ja",
-     "text_language": "ja",
-     "speed": 1.0
-   }
-   ```
-   （日语角色用 `ja`，中文用 `zh`，英文用 `en`）
-3. 重启服务或重载目录
-
-## 目录结构
-
+```ini
+deepseek_api_key = sk-xxxxxxxx
+deepseek_model = deepseek-chat
+port = 8092
+sbv2_api_url = http://127.0.0.1:8010
+gsv_api_url = http://127.0.0.1:9880
 ```
-tts/
-├── src/
-│   ├── main.py           # FastAPI 入口
-│   ├── voice_catalog.py  # 音色目录加载
-│   ├── gpt_sovits_client.py
-│   └── audio_preprocess.py
-├── voices/
-│   ├── eris/
-│   │   ├── reference.wav
-│   │   └── config.json
-│   └── ...
-├── scripts/
-│   └── preprocess_audio.py
-├── requirements.txt
-└── run.py
+
+`credentials.txt`（Gemini 情绪标注，仅 SBV2 训练时用）：
+
+```json
+{"gemini": {"api_key": "AIza...", "model": "models/gemini-2.5-flash-lite"}}
 ```

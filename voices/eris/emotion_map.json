@@ -1,0 +1,37 @@
+{
+  "neutral": [
+    "eris_test_003",
+    "eris_test_029",
+    "eris_test_083"
+  ],
+  "gentle": [
+    "eris_test_005",
+    "eris_test_050",
+    "eris_test_054"
+  ],
+  "serious": [
+    "eris_test_006",
+    "eris_test_009",
+    "eris_test_060"
+  ],
+  "confident": [
+    "eris_test_295",
+    "eris_test_001",
+    "eris_test_012"
+  ],
+  "surprised": [
+    "eris_test_034",
+    "eris_test_231",
+    "eris_test_007"
+  ],
+  "happy": [
+    "eris_test_010",
+    "eris_test_020",
+    "eris_test_021"
+  ],
+  "sad": [
+    "eris_test_255",
+    "eris_test_018",
+    "eris_test_051"
+  ]
+}

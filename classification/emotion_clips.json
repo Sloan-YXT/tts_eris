@@ -1,0 +1,1286 @@
+{
+  "eris_avl_001": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "语调自信且带有一丝傲慢，结合“生意気（无礼、傲慢）”和“谁だと思ってるの（你以为我是谁）”的说法，表明角色对自己的能力或身份充满自信。",
+    "transcript": "生意気よ私を誰だと思ってるの年下のくせに生意気だからよ"
+  },
+  "eris_avl_002": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "说话者语气低沉，带着一丝无奈和质问，似乎对某事感到不情愿和悲伤。",
+    "transcript": "くれば大丈夫ねなんであったとの約束を 守らなきゃならないの"
+  },
+  "eris_avl_003": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "角色的语气坚定，表达了不再大声嚷嚷的决心，显示出自信。",
+    "transcript": "さっきのは嘘よもう大声渡さないわ"
+  },
+  "eris_avl_004": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "语音的语调自信且带有轻微的优越感，表明角色有能力并且在施舍恩惠。",
+    "transcript": "って呼ぶことを許してあげる"
+  },
+  "eris_avl_005": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，带有不容置疑的自信，表明她认为自己是特别的，不需要别人（様）的认可。",
+    "transcript": "特別なんだからね様はいらないわ"
+  },
+  "eris_avl_006": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "说话者以一种低沉、略带颤抖的语调表达了对跳舞无用的看法，并承认自己不擅长，暗示了沮丧和自我否定。",
+    "transcript": "ダンスなんて必要ないわうまくできないことを"
+  },
+  "eris_avl_007": {
+    "emotion": "happy",
+    "confidence": 0.8,
+    "reason": "角色的语气听起来很愉快，并且使用了“おつかれさま”来表达对对方辛勤工作的肯定，这是一种积极的问候。",
+    "transcript": "おつかれさま、さようなら"
+  },
+  "eris_avl_008": {
+    "emotion": "happy",
+    "confidence": 0.8,
+    "reason": "角色的语调听起来非常愉快和感激，带有明显的积极情绪。",
+    "transcript": "ありがとうございます"
+  },
+  "eris_avl_009": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "说话者语气中带着一丝遗憾和无可奈何，暗示了对过去处境的怀念或不满。",
+    "transcript": "ルーデウスもあんな家の生まれじゃなければね"
+  },
+  "eris_avl_010": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "说话者语气温和，带有宠溺和纵容的意味，像是在特别的日子里允许对方做一些平时不允许的事情。",
+    "transcript": "今日は特別な日だから特別に許してあげる"
+  },
+  "eris_avl_011": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话者以一种平静的语气陈述了一个假设性的未来情况，没有明显的情感波动。",
+    "transcript": "あと5年経ってルーデウスがちゃんと成人したら"
+  },
+  "eris_avl_012": {
+    "emotion": "gentle",
+    "confidence": 0.8,
+    "reason": "说话者用柔和的语气说了“晚安”，并且“明天拜托了”这句话也带着一种亲切和期待的语调。",
+    "transcript": "おやすみ明日からよろしく"
+  },
+  "eris_avl_013": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "角色的語氣語調都帶有肯定的感覺，並且 transcript 的內容也暗示了某種確信。",
+    "transcript": "ここならルーデウスの最強魔術を見れるのね"
+  },
+  "eris_avl_014": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "角色的语气坚定而有力，显示出一种自信的情绪。",
+    "transcript": "剣さえあれば私も戦えるわあれが兄よ"
+  },
+  "eris_avl_015": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "语调自信而略带傲慢，语气坚定地宣称自己是姐姐。",
+    "transcript": "私の方がお姉さんなんだからねうらねえ"
+  },
+  "eris_avl_016": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "角色的语调热情洋溢，语气欢快，表达了对观众的感谢，这与快乐的情绪最吻合。",
+    "transcript": "ご視聴ありがとうございました"
+  },
+  "eris_avl_017": {
+    "emotion": "surprised",
+    "confidence": 0.85,
+    "reason": "角色的語氣和語速表明她對自己成為冒險者感到意外和興奮。",
+    "transcript": "これで私も冒険者ですやめないじゃない"
+  },
+  "eris_avl_018": {
+    "emotion": "serious",
+    "confidence": 0.9,
+    "reason": "说话者语气带有责问和不满，表明她在认真地对待这个问题。",
+    "transcript": "ルーデウスなんで依頼を受けなかったのよ"
+  },
+  "eris_avl_019": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "语气中的疑问和不确定感，加上轻微的拖长音，表明她对当前情境感到惊讶和怀疑。",
+    "transcript": "大丈夫よね本当にこっちで合ってるんでしょうね"
+  },
+  "eris_avl_020": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "说话者语气急切，表达了见到某人的强烈愿望，这通常与积极的情绪和喜悦相关。",
+    "transcript": "強いのかしら早く会いたいわ"
+  },
+  "eris_avl_021": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "语音语调平淡，没有明显的情感起伏，结合“感谢观看”的字幕，可以判断为中性表达。",
+    "transcript": "ご視聴ありがとうございました"
+  },
+  "eris_avl_022": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "语气平缓，语速适中，虽然表示遇到了麻烦，但整体没有强烈的情感波动。",
+    "transcript": "困ったわね私も何か考えてみるわ"
+  },
+  "eris_avl_023": {
+    "emotion": "neutral",
+    "confidence": 0.7,
+    "reason": "角色的语气平静，没有明显的情感波动，但表达了一个新的计划。",
+    "transcript": "ルーディオス、今日は別行動をするって"
+  },
+  "eris_avl_024": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话者用平淡的语气描述了气味和到达目的地的事实，没有明显的情感波动。",
+    "transcript": "変な匂いがするわねやっと着いたのね"
+  },
+  "eris_avl_025": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "角色的语调中带有沮丧和遗憾，表明她不想再乘坐船只了。",
+    "transcript": "もう船になんか乗らないわ"
+  },
+  "eris_avl_026": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "音频中角色的语气柔和，带着一丝期盼，符合温柔的情感。",
+    "transcript": "その時はまたずっとヒーリングしてくれる"
+  },
+  "eris_avl_027": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "角色的语气中带有委屈和无奈，尤其是“しょうがないわね”这句话，暗示了她因为对方的恶意而感到伤心和无可奈何。",
+    "transcript": "なんで意地悪言うのよしょうがないわね"
+  },
+  "eris_avl_028": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "语音语调的突然抬高和句末的拖长，加上“嫌いなの”的语气，暗示了对“漂亮”事物的意外和困惑。",
+    "transcript": "キレイなのこと嫌いなの"
+  },
+  "eris_avl_029": {
+    "emotion": "happy",
+    "confidence": 0.8,
+    "reason": "语音语调轻快上扬，带着喜爱和赞赏，像是在夸奖一位和蔼可亲的长辈。",
+    "transcript": "綺麗な綺麗なおばちゃん"
+  },
+  "eris_avl_030": {
+    "emotion": "gentle",
+    "confidence": 0.8,
+    "reason": "语调轻柔，带有赞赏和一丝钦佩，表明说话者对老师的剑术印象深刻且态度温和。",
+    "transcript": "綺麗な私の剣術の先生で"
+  },
+  "eris_avl_031": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "角色的语气平淡，没有明显的情感波动，陈述了自己的想法。",
+    "transcript": "嫌ならやらなきゃいいじゃないトーナは私と同じね"
+  },
+  "eris_avl_032": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "说话者带着愉悦的语气表达了对吉尔吉尔的感激之情，这暗示了积极的情感。",
+    "transcript": "だからギレーヌには感謝してるの"
+  },
+  "eris_avl_033": {
+    "emotion": "serious",
+    "confidence": 0.8,
+    "reason": "说话者语气坚定，语速稍快，带有决心，表明是在陈述一个重要的原因，倾向于严肃的情感。",
+    "transcript": "私に剣の道を教えてくれたから"
+  },
+  "eris_avl_034": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "语调上扬，语气中带有明显的喜悦和自豪，因为能够在短时间内取得显著进步。",
+    "transcript": "たった3ヶ月でずいぶん動けるようになったじゃない"
+  },
+  "eris_avl_035": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话者语气平淡，并陈述了一个客观事实，即需要回家，没有明显的情绪波动。",
+    "transcript": "私は帰らなきゃいけないところがあるから"
+  },
+  "eris_avl_036": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "说话者语气低沉，带着一丝无奈和不情愿，表达了对不得不再次乘船的不满和悲伤。",
+    "transcript": "船に乗らなきゃいけないの"
+  },
+  "eris_avl_037": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "这句话的语调急促且带有疑问，显示出说话者对突发情况的震惊和不解。",
+    "transcript": "誰よ誰なんで必殺弾でしょ"
+  },
+  "eris_avl_038": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "语音语调平缓，没有明显的情绪波动，但表达了个人感受，因此偏向中性。",
+    "transcript": "私は構わないわもうお腹減ってきたわね"
+  },
+  "eris_avl_039": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话者带着疑问和惊讶的语气，表示她第一次来到这里。",
+    "transcript": "ここがシーロー王国の使徒なのね"
+  },
+  "eris_avl_040": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "語氣中的質疑和驚訝感，暗示了對情況的意外。",
+    "transcript": "ここにはルーデウスの師匠がいるのよねどうしたのルーデウス"
+  },
+  "eris_avl_041": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "说话者带有疑问和指责的语气，音调下降，表达了不满和难过。",
+    "transcript": "なんでそんなことするのよ"
+  },
+  "eris_avl_042": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者认为自己即使“就这样”也很帅，语气中带着自信。",
+    "transcript": "私はそのままでもかっこいいと思うけど"
+  },
+  "eris_avl_043": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "语调的上升和拖长暗示了说话者对即将发生的事情感到一丝惊讶或不确定。",
+    "transcript": "ちゃんと紹介してくれるのよね"
+  },
+  "eris_avl_044": {
+    "emotion": "surprised",
+    "confidence": 0.7,
+    "reason": "她的语调从疑惑到顿悟，带有惊讶的转折。",
+    "transcript": "どういうことよわかったわ"
+  },
+  "eris_avl_045": {
+    "emotion": "neutral",
+    "confidence": 0.0,
+    "reason": "error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+    "transcript": "一度戦ってみたいわね何あれあんたたちの家族なら絶対に大丈夫よ"
+  },
+  "eris_avl_046": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，带有不容置疑的自信，似乎在陈述一个既定事实。",
+    "transcript": "ルイゼルドが向かったんだものそうよ"
+  },
+  "eris_avl_047": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话者语气平淡，没有明显的情感起伏，似乎在陈述事实或回忆。",
+    "transcript": "その何か言っててあのウォルステッドとか言うのが"
+  },
+  "eris_avl_048": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "角色的语气平淡，没有明显的情感起伏，更像是在陈述一个事实。",
+    "transcript": "自由魔術で七星って言われてた"
+  },
+  "eris_avl_049": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "说话者语气轻柔，语速缓慢，并且使用了“大丈夫よ”这样的词语，表明她在安慰对方，展现出温柔的情绪。",
+    "transcript": "大丈夫よ。気絶してるだけだって。"
+  },
+  "eris_avl_050": {
+    "emotion": "neutral",
+    "confidence": 0.0,
+    "reason": "error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+    "transcript": "ルーデウス、随分と元気ね"
+  },
+  "eris_avl_051": {
+    "emotion": "serious",
+    "confidence": 0.9,
+    "reason": "说话者语气平静但带有预料之中的忧虑，表明她对当前情况的严肃认识。",
+    "transcript": "大丈夫よこんなことになるんじゃないかと思っていたわ"
+  },
+  "eris_avl_052": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "说话者语气轻快，语速适中，并在提到自己生日时带有上扬的语调，显示出喜悦的情绪。",
+    "transcript": "私この間15歳になったの家族よ"
+  },
+  "eris_avl_053": {
+    "emotion": "gentle",
+    "confidence": 0.8,
+    "reason": "语调温柔，话语中带有提议和关怀，给人一种亲近和安抚的感觉。",
+    "transcript": "つまりその 一緒に寝ましょうってことよ"
+  },
+  "eris_avl_054": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "说话者语气坚定，但并没有强烈的负面情绪，表达的是一种“我不在乎”的自信。",
+    "transcript": "前に約束したじゃないどっちでも構わないわ"
+  },
+  "eris_avl_055": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话者语气平淡，没有明显的悲伤、喜悦或惊讶，只是陈述事实。",
+    "transcript": "私が嫌ってわけじゃないのよねさっきから目線がエッチね"
+  },
+  "eris_avl_056": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "说话者在说“所以只说一遍”时，语气略带犹豫和低沉，显得有些伤感。",
+    "transcript": "恥ずかしいから一回しか言わないわ"
+  },
+  "eris_avl_057": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "语气中的“ニャン”字和“欲しい”表达了小猫般的可爱和想要的心情，整体语调上扬，显得很高兴。",
+    "transcript": "私、ルーデウスの子猫が欲しいニャン"
+  },
+  "eris_avl_058": {
+    "emotion": "neutral",
+    "confidence": 0.7,
+    "reason": "语音语调平缓，没有明显的情绪波动，更像是在陈述一个事实。",
+    "transcript": "もう夜明けよルーデウスはね"
+  },
+  "eris_avl_059": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "语气中带着惊叹和感叹，明显是对某事感到意外和钦佩。",
+    "transcript": "すごいのよ頭が良くて"
+  },
+  "eris_avl_060": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者用强有力且充满自信的语调表达了自己“又强又非常有才能”的特质。",
+    "transcript": "強くて すごく才能があって"
+  },
+  "eris_avl_061": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "说话者以一种陈述事实的语气说出这句话，没有明显的情感波动。",
+    "transcript": "でも毎日魔術の訓練だって隠さなくて"
+  },
+  "eris_avl_062": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "说话者语气带有哀伤和难以置信，表达了对路弗瑞斯死亡的悲痛。",
+    "transcript": "だからルフレウスが死んじゃうなんて私"
+  },
+  "eris_avl_063": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "语调低沉，表达了无能为力和绝望的情绪。",
+    "transcript": "何もできない。果たしちゃう。"
+  },
+  "eris_avl_064": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "说话者回顾过去，语气中带着对曾经被依靠和关怀的怀念，但如今这种依靠和关怀似乎已不复存在，因此流露出伤感的情绪。",
+    "transcript": "頼ってばっかりでいつだって私たちのことを考えてくれていたのに"
+  },
+  "eris_avl_065": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "角色的语调轻柔，语气中带着一丝温柔和回忆，表明她对鲁迪乌斯的手的大小感到一种温和的注意。",
+    "transcript": "ルーデウスの手私より小さかった"
+  },
+  "eris_avl_066": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "说话者语气坚定，表示一定会再见面，流露出自信的情感。",
+    "transcript": "いつかまた会いに行くわ"
+  },
+  "eris_avl_067": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "说话者表达了通过修炼达到能够打败龙神的能力，语气中充满了自信。",
+    "transcript": "修行して龍神を倒せるくらいになったら"
+  },
+  "eris_avl_068": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "语调温柔，请求的语气中带着一丝恳切，表现出柔和的情感。",
+    "transcript": "お、エリスに魔術を教えてください"
+  },
+  "eris_avl_069": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话者语气平淡，没有明显的情绪起伏，而且内容是陈述性的。",
+    "transcript": "読み書き算術はいらないにゃ"
+  },
+  "eris_avl_070": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "发言者用坚定的语气表达了自己未来要实现宏大目标的决心，显示出强烈的自信。",
+    "transcript": "いつかルーレスみたいな大きな花火をあげてみせる"
+  },
+  "eris_avl_071": {
+    "emotion": "serious",
+    "confidence": 0.9,
+    "reason": "角色的语调带有责备和不满，表达了对对方的失望和严肃的批评。",
+    "transcript": "何よ情けないわねそんなんだから舐められるのよ"
+  },
+  "eris_avl_072": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "语音语调中带着确定的语气，在陈述一个既定事实，所以表现出自信。",
+    "transcript": "最初に大道家を10枚持っていたら11枚になるんでしょ"
+  },
+  "eris_avl_073": {
+    "emotion": "serious",
+    "confidence": 0.8,
+    "reason": "说话者语气严肃，语速稍快，并使用了“灭亡”这样的词汇，表明正在陈述一个严重的问题。",
+    "transcript": "テラスってのは人を滅ぼそうとしてた薄っ"
+  },
+  "eris_avl_074": {
+    "emotion": "happy",
+    "confidence": 0.8,
+    "reason": "说话者语气兴奋，语速稍快，并伴有语气的上扬，表达了对“テルギウス”的积极看法。",
+    "transcript": "恋悪いやつ テルギウスはすっごく強くてねー"
+  },
+  "eris_avl_075": {
+    "emotion": "neutral",
+    "confidence": 0.0,
+    "reason": "error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+    "transcript": "この前欲しそうに見たじゃないドーツリーの計算もできたわ"
+  },
+  "eris_avl_076": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "说话者语气低沉，语速较慢，并表示“派对也不去，也做不好”，流露出失落和沮丧的情绪。",
+    "transcript": "パーティーも出ないうまくできない"
+  },
+  "eris_avl_077": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "说话者在提到鲁迪乌斯如果不是出身于那样的家庭，语气中带着明显的遗憾和悲伤。",
+    "transcript": "ルーデウスもあんな家の生まれじゃなければね"
+  },
+  "eris_avl_078": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "角色的语气充满喜悦，并用“おめでとう”表达了祝福，显示出高兴的情绪。",
+    "transcript": "ルーデルスおめでとう"
+  },
+  "eris_avl_079": {
+    "emotion": "gentle",
+    "confidence": 0.8,
+    "reason": "说话者的语气温柔而亲切，似乎在与人分享一些私人的想法或建议。",
+    "transcript": "あのねルーデウスその"
+  },
+  "eris_avl_080": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者语气带点惊讶和疑惑，似乎对路伊登斯作为魔术师的实力感到意外。",
+    "transcript": "例のものルイデンスはすごい魔術師なのに"
+  },
+  "eris_avl_081": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "语调上扬，带有明显的喜悦感，并且“おめでとう”是祝贺的常用语，表达了高兴的心情。",
+    "transcript": "ルーデンスおめでとう"
+  },
+  "eris_avl_082": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "从音频和文本来看，角色语气温柔，表达了陪伴和安慰的情感，没有明显的负面情绪。",
+    "transcript": "一人で寂しいだろうから今日は一緒に寝てあげるわ"
+  },
+  "eris_avl_083": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话的语气带着一点急促和惊讶，后半句的迟疑也表明了说话者可能对某事感到意外。",
+    "transcript": "ルーデウス、ちょ、ちょっとぐらいなら"
+  },
+  "eris_avl_084": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "说话者预测了五年后鲁德乌斯成人时的场景，语气中带有肯定和自信。",
+    "transcript": "あと5年経ってルーデウスがちゃんと成人したら"
+  },
+  "eris_avl_085": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "语气轻柔，带有告别的意味，表现出温柔的情绪。",
+    "transcript": "じゃあ私も寝るからじゃあねルーディウス"
+  },
+  "eris_avl_086": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者语气中带有疑问和惊讶，表达了对眼前情况的不可置信。",
+    "transcript": "見えないのに魔物がいるってわかったのよ"
+  },
+  "eris_avl_087": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，强调自己也能战斗，并自信地宣称自己是姐姐，展现出强烈的自信心。",
+    "transcript": "剣さえあれば私も戦えるわ誰が兄よ私の方がお姉さんなんだからね"
+  },
+  "eris_avl_088": {
+    "emotion": "serious",
+    "confidence": 0.8,
+    "reason": "说话者语气略带责备和不满，询问鲁迪乌斯为何没有接受委托，情绪偏向严肃。",
+    "transcript": "ルーデウスなんで依頼を受けなかったのよ"
+  },
+  "eris_avl_089": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "语音语调充满活力和决心，表达了想要快速去打败龙的自信。",
+    "transcript": "私早くドラゴンとか倒しに行きたいわ"
+  },
+  "eris_avl_090": {
+    "emotion": "neutral",
+    "confidence": 0.0,
+    "reason": "发言者语气急促，语调高昂，显示出强烈的不满和愤怒。",
+    "transcript": "もう一回言うくらいなら"
+  },
+  "eris_avl_091": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "语气拖长且语调上扬，结合“没想到”的含义，表达了出乎意料的惊喜。",
+    "transcript": "いやー敵と戦えることのに"
+  },
+  "eris_avl_092": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气自信，带有挑战意味，表示自己不会轻易被击败。",
+    "transcript": "魔眼を手払って私に勝てるかしら"
+  },
+  "eris_avl_093": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "根据音频的语气和“追不上”的情绪，说话者似乎感到沮丧和失望。",
+    "transcript": "明日って早くルーデウスに追いつきたいのに"
+  },
+  "eris_avl_094": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "音频中的语调平稳，没有明显的情感起伏，结合字幕“我的名字是艾莉丝”，可以判断为陈述事实的中性语气。",
+    "transcript": "私の名前はエリスです"
+  },
+  "eris_avl_095": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "说话者语气低沉，语速较慢，并伴有叹息，表达了对“美丽”一词的厌恶或沮丧。",
+    "transcript": "キレイなのこと嫌いなの"
+  },
+  "eris_avl_096": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者用一种自豪的语气陈述自己是一名优秀的剑术老师，语气坚定且带有自信。",
+    "transcript": "綺麗な私の剣術の先生で"
+  },
+  "eris_avl_097": {
+    "emotion": "serious",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，表达了必须离开的决心，显示出一种严肃的态度。",
+    "transcript": "ダメよ私は帰らなきゃいけないところがあるから"
+  },
+  "eris_avl_098": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "说话者语气积极，语速稍快，在报告自己完成某项任务（打倒哥布林）后，询问对方是否在听，显示出一种自信和期待被认可的情绪。",
+    "transcript": "ただいまあるあのね聞いてさっきゴブリンたちを倒してき"
+  },
+  "eris_avl_099": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "语调的急促和疑问句式表明了角色的惊讶和不解。",
+    "transcript": "そんなはずないなんで久しぶりなんでしょ"
+  },
+  "eris_avl_100": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者语气中带着难以置信和一丝质问，似乎对某人能安然无恙地走到这里感到惊讶。",
+    "transcript": "ルーデウスをあんな目に合わせておいてよくここまで来られたわね"
+  },
+  "eris_avl_101": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "发言者语气平缓，带有确认的陈述感，没有明显的情绪波动。",
+    "transcript": "ここがシーロー王国の使徒なのね"
+  },
+  "eris_avl_102": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话者语气惊讶，似乎在询问鲁迪乌斯为何突然出现，而不是在原本应该在的地方。",
+    "transcript": "どうしたのルーディウスミリシオにいたじゃない生意気そうなのが"
+  },
+  "eris_avl_103": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话语气平和，没有明显的情感起伏，符合中性情绪的表达。",
+    "transcript": "家族のことならば仕方ないわね"
+  },
+  "eris_avl_104": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话者语气平淡，没有明显的情感波动，更多是在陈述一个事实。",
+    "transcript": "ずいぶんと念入りねちゃんと紹介してくれるのよね"
+  },
+  "eris_avl_105": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "说话者语气坚定，似乎在提出一个明确的建议，并且对自己的提议很有把握。",
+    "transcript": "こんな迂回路じゃなくて上を通っていきましょうよ"
+  },
+  "eris_avl_106": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "说话者语气平淡，没有明显的情绪波动，更像是在陈述一个事实。",
+    "transcript": "何か言っててあのウォルステッドとか言うのが"
+  },
+  "eris_avl_107": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "说话者语气坚定，表达了对“七星”这个称呼的肯定并安慰对方，显示出自信。",
+    "transcript": "七星って言われてた 大丈夫よ"
+  },
+  "eris_avl_108": {
+    "emotion": "serious",
+    "confidence": 0.8,
+    "reason": "角色的语气带着一种不容置疑的肯定，同时又透露出一丝无奈和严肃，似乎在强调一个事实。",
+    "transcript": "気絶してるだけだってルーデウス"
+  },
+  "eris_avl_109": {
+    "emotion": "gentle",
+    "confidence": 0.8,
+    "reason": "角色的语气温柔而关切，似乎在安抚对方。",
+    "transcript": "こんばんは、ルーディウス。大丈夫よ。"
+  },
+  "eris_avl_110": {
+    "emotion": "serious",
+    "confidence": 0.9,
+    "reason": "说话者语气沉重，带有担忧和预料到不好的事情的意味，符合“严肃”的情绪。",
+    "transcript": "こんなことになるんじゃないかと思っていたわ"
+  },
+  "eris_avl_111": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "说话者语气轻快，语速稍快，带有分享好消息的喜悦感，并以“哦”的语气词结尾，表达了她很高兴自己15岁了。",
+    "transcript": "それでね、私この間15歳になったの"
+  },
+  "eris_avl_112": {
+    "emotion": "gentle",
+    "confidence": 0.8,
+    "reason": "角色的语速平缓，语气温柔，并提出了一个亲密的建议，显示出一种柔和的情感。",
+    "transcript": "つまりその一緒に寝ましょうって"
+  },
+  "eris_avl_113": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话者用疑问的语气表达了惊讶，好像在确认自己的感受。",
+    "transcript": "もうこれって興奮してるって"
+  },
+  "eris_avl_114": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "这句话语气平淡，没有明显的情感波动，但带有轻微的自我辩解意味，更倾向于中性。",
+    "transcript": "私が嫌ってわけじゃないのよね"
+  },
+  "eris_avl_115": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "角色的语调带着一种沮丧和无奈，仿佛在对某人的拒绝感到失望。",
+    "transcript": "でもダメって言うのねえルーデウス"
+  },
+  "eris_avl_116": {
+    "emotion": "neutral",
+    "confidence": 0.0,
+    "reason": "说话者带着一丝羞怯，只说了一次是因为感到尴尬。",
+    "transcript": "恥ずかしいから一回しか言わないわ"
+  },
+  "eris_avl_117": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "说话者用一种愉快和撒娇的语气表达了想要一只小猫的愿望，语气充满期待和喜悦。",
+    "transcript": "私、ルーデウスの子猫が欲しいニャン"
+  },
+  "eris_avl_118": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "说话者以一种沉重且略带哽咽的语气表达了鲁列乌斯去世的悲伤。",
+    "transcript": "だからルーレウスが死んじゃうなんて私"
+  },
+  "eris_avl_119": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "角色在音频中用一种无助的语气说“什么都做不了”，表达了强烈的无力感和悲伤。",
+    "transcript": "何もできない。果たしちゃう。"
+  },
+  "eris_avl_120": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话者以一种平淡的语气说出这句话，听不出明显的情绪波动。",
+    "transcript": "何もいつもルイデウスに"
+  },
+  "eris_avl_121": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "说话者语气坚定，表达了自己能够变得强大到足以击败龙神的信心。",
+    "transcript": "修行して龍神を倒せるくらいになったら"
+  },
+  "eris_avl_122": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "发言者似乎对现状感到沮丧和无助，认为自己没有用处，并产生了放弃的想法。",
+    "transcript": "役に立ちそうにないし帰っても"
+  },
+  "eris_avl_123": {
+    "emotion": "serious",
+    "confidence": 0.8,
+    "reason": "角色的语气带着一丝担忧和提醒，强调了回程时天黑的风险，显得比较严肃。",
+    "transcript": "森はダメよ 帰る頃には夜になる可能性が高いわ"
+  },
+  "eris_avl_124": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者的语气坚定自信，带有鼓励的意味，表明相信鲁迪乌斯的能力。",
+    "transcript": "ルーデウスならできるわ私の先生よ"
+  },
+  "eris_avl_125": {
+    "emotion": "confident",
+    "confidence": 0.85,
+    "reason": "说话者语气坚定，带有自信的语气，表明她相信在森林里有其他冒险者。",
+    "transcript": "この森には別の冒険者がいるはずよ"
+  },
+  "eris_avl_126": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "说话者用肯定的语气介绍自己是“スペルト族”，并在后面表达了她之前的犹豫，显示出一种自信和明确。",
+    "transcript": "こう見えてもスペルト族よそういえば私迷ってたのよ"
+  },
+  "eris_avl_127": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "说话者语气温和，带着一丝感激，表示只要告知回家的路作为报答，显示出一种友好和轻柔的情感。",
+    "transcript": "助けたお礼は帰り道を教えてくれればいいわ"
+  },
+  "eris_avl_128": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的语气和词语 '何よ'（什么呀）表明了她对对方的着装感到惊讶。",
+    "transcript": "何よその格好まあいいわ"
+  },
+  "eris_avl_129": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "说话者语气平和，没有明显的情绪波动，符合中性情绪的表达。",
+    "transcript": "よし私たちもここで解散ね"
+  },
+  "eris_avl_130": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "语音语调自信且肯定，句子内容是“鲁迪乌斯很厉害”，表达了对鲁迪乌斯的赞赏和自信。",
+    "transcript": "絶対にルーデウスはすごいのよ"
+  },
+  "eris_avl_131": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "这句话表达了说话者对自己能够使用魔法的绝对自信，并且认为自己比对方更能有效地使用它。",
+    "transcript": "魔術を無影響で出せるんだからあんた以上に使えるわ"
+  },
+  "eris_avl_132": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，内容上强调了自己独自获胜的经历，表现出自信。",
+    "transcript": "私より背は小さいけどこの間だって北西に一人で勝ったの"
+  },
+  "eris_avl_133": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "说话者语气平缓，没有明显的情感起伏，且内容是关于听闻的信息，而非亲身经历。",
+    "transcript": "まあそれは聞いた話で見てたわけじゃないんだけど"
+  },
+  "eris_avl_134": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "说话者语气坚定，带有一种不再受情绪影响的决心，表明其自信。",
+    "transcript": "さっきのは嘘よもう大声は出さないわ"
+  },
+  "eris_avl_135": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，带着一丝不满和挑战，认为对方既然这么说，自己来做便是，表现出一种理所当然的自信。",
+    "transcript": "なら あんたが 全部やればいいじゃない何よ 家庭教師でしょ"
+  },
+  "eris_avl_136": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "说话者语气中带着一种自信的恩赐感，暗示着对方可以称呼自己为“爱丽丝”，并且这种允许是对方的一种荣幸。",
+    "transcript": "って呼ぶことを許してあげるわ"
+  },
+  "eris_avl_137": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "声线上扬，语速稍快，充满对未来的憧憬和兴奋，表达了想要实现宏大梦想的喜悦。",
+    "transcript": "いつかルーディスみたいな大きな花火をあげてみ"
+  },
+  "eris_avl_138": {
+    "emotion": "serious",
+    "confidence": 0.9,
+    "reason": "角色的语调中带着明显的失望和责备，明显是对对方的行为感到不满，因此带有严肃的情绪。",
+    "transcript": "何よ情けないわねそんなんだから舐められるのよ"
+  },
+  "eris_avl_139": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "角色的语气坚定而自信，陈述了一个事实，并且带有自豪感。",
+    "transcript": "ペルギウスっていうのはね魔神ラプラスを倒した三英雄の一人よ"
+  },
+  "eris_avl_140": {
+    "emotion": "serious",
+    "confidence": 0.9,
+    "reason": "说话者语气严肃，语速较快，带有强烈的指控意味，似乎在揭露某个事实。",
+    "transcript": "ってのは人を滅ぼそうとしてた"
+  },
+  "eris_avl_141": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "说话者用一种非常肯定和强调的语气描述了“特尔吉乌斯”的强大，并且语速较快，显示出自信。",
+    "transcript": "すっごい悪いやつ。テルギウスはすっごく強くてね。"
+  },
+  "eris_avl_142": {
+    "emotion": "happy",
+    "confidence": 0.8,
+    "reason": "语音语调欢快，带有期待和满足感，符合“高兴”的情绪。",
+    "transcript": "ところでルーデンスこの前欲しそうに見てたじゃない"
+  },
+  "eris_avl_143": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话者语气平淡，语速适中，没有明显的情绪波动，表达了对跳舞和派对的看法。",
+    "transcript": "ダンスなんて必要ないわパーティーも"
+  },
+  "eris_avl_144": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "语气中的“えー”和“なにそれ”结合了不解和轻微的惊讶，表明说话者对眼前的事物感到意外。",
+    "transcript": "なにそれ えーそんなのよりあっちのがいい"
+  },
+  "eris_avl_145": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "说话者的语调上扬，语速适中，带有明显的愉悦感，明显是在表达感谢和高兴。",
+    "transcript": "ありがとうございます"
+  },
+  "eris_avl_146": {
+    "emotion": "serious",
+    "confidence": 0.8,
+    "reason": "说话者表达了在特定日期前必须完成某事的紧迫感，语气中带有决心和严肃性。",
+    "transcript": "ルーデウスの10歳のお祝いまでに間に合わせないと"
+  },
+  "eris_avl_147": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话者语气中的停顿和拖长表示惊讶或不确定，似乎对“来不了”这个信息感到意外。",
+    "transcript": "来れないってえ、えっと"
+  },
+  "eris_avl_148": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "角色的语气听起来很平静，似乎是在正常地交谈，没有明显的情绪波动。",
+    "transcript": "うんっ 例のもらう受け取って"
+  },
+  "eris_avl_149": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "说话者带着喜悦的语调祝贺“鲁迪乌斯”，这表明她很高兴。",
+    "transcript": "ルーデウスおめでとう"
+  },
+  "eris_avl_150": {
+    "emotion": "happy",
+    "confidence": 0.8,
+    "reason": "说话者语气上扬，带有愉悦感，并且“特别的日子”暗示着积极的事件。",
+    "transcript": "今日は特別な日だから"
+  },
+  "eris_avl_151": {
+    "emotion": "gentle",
+    "confidence": 0.8,
+    "reason": "角色以一种温和的语气说出“特别允许你”，虽然带有“但是”的转折，但整体表达的是一种宽容和善意。",
+    "transcript": "特別に許してあげるでも"
+  },
+  "eris_avl_152": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话者语气平缓，没有明显的情绪波动，听起来像是在陈述一个未来可能发生的事实。",
+    "transcript": "あと5年経ってルーデウスがちゃんと成人したら"
+  },
+  "eris_avl_153": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "说话者语气愉悦，带有期待感，认为自己可以在这里看到最强的魔法。",
+    "transcript": "ここならルーレウスの最強魔術を見れるのね"
+  },
+  "eris_avl_154": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "语气中带有的疑问和惊叹感，结合“どうして～わかったのよ”和“便利ね”的表达，表明了说话者对某事物的意外和惊讶。",
+    "transcript": "どうして見えないのに魔物がいるってわかったのよ便利ね"
+  },
+  "eris_avl_155": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "角色的语气自信且带有挑战性，表示自己有能力战斗，并强调了自己作为姐姐的地位。",
+    "transcript": "剣さえあれば私も戦えるわ誰が兄よ私の方がお姉さんなんだからね"
+  },
+  "eris_avl_156": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色语速较快，语气带有一点疑问和不解，显示出惊讶的情绪。",
+    "transcript": "ルーデウス なんで依頼を受けなかったのよ"
+  },
+  "eris_avl_157": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "角色语气温柔，带有询问和关切，表达了对吉蕾奴和爷爷安危的关心。",
+    "transcript": "ギレーヌもおじいさまも大丈夫よね"
+  },
+  "eris_avl_158": {
+    "emotion": "happy",
+    "confidence": 0.8,
+    "reason": "语调上扬，语速略快，带有兴奋和开心的感觉，表达了发现“我们似乎是伙伴”时的喜悦。",
+    "transcript": "なんか私たち仲間っぽいもう"
+  },
+  "eris_avl_159": {
+    "emotion": "neutral",
+    "confidence": 0.0,
+    "reason": "角色的语气充满愤怒和指责，同时带有不屑，表达了对对方过去行为的不满。",
+    "transcript": "蹴るぐらい私だってスタだって昔は悪いこと知ってたんじゃ"
+  },
+  "eris_avl_160": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者用质疑的语气挑战对手，显示出对自己实力的绝对自信。",
+    "transcript": "魔眼王だからって私に勝てるかしら"
+  },
+  "eris_avl_161": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "说话者带着一种疲惫和无奈的语气，表示再也不想坐船了，流露出一种伤感的情绪。",
+    "transcript": "やっと着いたのねもう船になんか乗らないわ"
+  },
+  "eris_avl_162": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "说话者语气温柔，用词表达了对未来依靠和安慰的期盼，符合温柔的情感。",
+    "transcript": "その時はまたずっとヒーリングしてくれる"
+  },
+  "eris_avl_163": {
+    "emotion": "sad",
+    "confidence": 0.7,
+    "reason": "角色的语气带着哭腔和不满，明显是在表达委屈和难过。",
+    "transcript": "なんで意地悪言うのよ"
+  },
+  "eris_avl_164": {
+    "emotion": "gentle",
+    "confidence": 0.8,
+    "reason": "说话者语气温和，略带无奈，符合温柔的情感表达。",
+    "transcript": "しょうがないわね次は"
+  },
+  "eris_avl_165": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "音频的语调平缓，没有明显的情感波动，符合中性陈述的语气。",
+    "transcript": "私の名前はエリスです"
+  },
+  "eris_avl_166": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "角色在谈论收到的礼物时，语气轻快，语速适中，带有愉悦的语调，表达了开心的情绪。",
+    "transcript": "10歳の誕生日にギレーヌからもらったの"
+  },
+  "eris_avl_167": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "声线低沉，语调带有哭腔，结合“嫌いなの”表达了对“綺麗な”的厌恶和悲伤。",
+    "transcript": "綺麗なのこと嫌いなの"
+  },
+  "eris_avl_168": {
+    "emotion": "happy",
+    "confidence": 0.8,
+    "reason": "语气轻柔且上扬，明显带有赞赏和愉悦的情感。",
+    "transcript": "綺麗な綺麗なおばちゃん"
+  },
+  "eris_avl_169": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "说话者用自信且略带自夸的语气描述了她的剑术老师。",
+    "transcript": "綺麗な私の剣術の先生で"
+  },
+  "eris_avl_170": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "说话者语气自信，表达了“不喜欢就不做”的立场，暗示了其掌握主导权。",
+    "transcript": "嫌ならやらなきゃいいじゃない"
+  },
+  "eris_avl_171": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "从音频的语调和内容来看，角色的语气平静，陈述了一个事实，没有明显的情感起伏。",
+    "transcript": "トーナは私と同じねビス"
+  },
+  "eris_avl_172": {
+    "emotion": "happy",
+    "confidence": 0.8,
+    "reason": "说话者表达了对吉尔莱娜的感激之情，语气中透露出愉悦和满意。",
+    "transcript": "だからギレーヌには感謝してるの"
+  },
+  "eris_avl_173": {
+    "emotion": "gentle",
+    "confidence": 0.8,
+    "reason": "说话者语气平和，语速适中，并带有感激之情，表达了对传授剑术之恩的感谢。",
+    "transcript": "私に剣の道を教えてくれたから"
+  },
+  "eris_avl_174": {
+    "emotion": "serious",
+    "confidence": 0.9,
+    "reason": "语音语调坚定有力，语气中带有不容置疑的决心，强调要让对方充分理解吉尔达的强大。",
+    "transcript": "ギレーヌの凄さがわかるまでみっちり"
+  },
+  "eris_avl_175": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "语调坚定有力，语气自信，表达出理所当然的意味。",
+    "transcript": "当たり前よ何が言いたいのよ"
+  },
+  "eris_avl_176": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者用自信的语气表示她独自一人就能应对哥布林，并在最后用“嗯，我明白了”确认了自己的能力。",
+    "transcript": "ゴブリンぐらい一人で大丈夫よ うんわかったわ"
+  },
+  "eris_avl_177": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者用一种略带惊讶的语气，质疑对方“怎么可能”以及“为什么”会这么久才见面，表现出意料之外的情绪。",
+    "transcript": "そんなはずないなんで久しぶりなんでしょ"
+  },
+  "eris_avl_178": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "说话者语气温和，带有一种无可奈何的柔情，这与\"gentle\"的情感标签非常吻合。",
+    "transcript": "仕方ないわねあのねルーディス"
+  },
+  "eris_avl_179": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "句子的语调带有疑问和确认的语气，结合了“这里是”和“原来是”的意味，表达了对眼前景象的意外发现。",
+    "transcript": "ここがシーロー王国の使徒なのね"
+  },
+  "eris_avl_180": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "发言者陈述了一个事实，语气平缓，没有明显的情绪波动。",
+    "transcript": "ここにはルーデスの師匠がいるのよね"
+  },
+  "eris_avl_181": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "说话者语气平淡，像是回忆往事，没有明显的情感起伏。",
+    "transcript": "ミリシオにいたじゃない生意気そうなのがふーん"
+  },
+  "eris_avl_182": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "她的语气中带着一丝无可奈何的叹息，并伴随着疑问，显示出一种对现状的无奈和悲伤。",
+    "transcript": "家族のことならば仕方ないわねなんでそんなことするのよ"
+  },
+  "eris_avl_183": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者用一种不容置疑的语气表达了自己即使现状也很有魅力的看法，显示出自信。",
+    "transcript": "私はそのままでもかっこいいと思うけど"
+  },
+  "eris_avl_184": {
+    "emotion": "happy",
+    "confidence": 0.8,
+    "reason": "语调上扬，带着笑意，如同发现别人夸奖自己时喜悦的表情。",
+    "transcript": "どうして褒めるとそういうにちゃっとした顔するのよ"
+  },
+  "eris_avl_185": {
+    "emotion": "happy",
+    "confidence": 0.8,
+    "reason": "语气中的上扬和快速的语速以及“いってらっしゃい”所表达的愉快送别，都表明了说话者很高兴。",
+    "transcript": "いってらっしゃいるーで"
+  },
+  "eris_avl_186": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "语音语调带有一种疑问和惊讶的语气，似乎对某种意想不到的情况感到意外。",
+    "transcript": "何かしら でもそんなに強いのなら"
+  },
+  "eris_avl_187": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者语气带着疑问和不确定，仿佛在确认眼前的事物并非虚幻，流露出惊讶的情绪。",
+    "transcript": "ルーダーズ夢じゃないかしら"
+  },
+  "eris_avl_188": {
+    "emotion": "happy",
+    "confidence": 0.8,
+    "reason": "角色的语气听起来很愉快，带着一些惊讶和赞许，但整体上是积极和开心的。",
+    "transcript": "ルーデウス、ずいぶんと元気ね"
+  },
+  "eris_avl_189": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "语音语调平淡，没有明显的情感起伏，但带有询问的意味。",
+    "transcript": "座ってそれでどうするの"
+  },
+  "eris_avl_190": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气平静，并表示她预料到了这种情况，这显示出一种胸有成竹的自信。",
+    "transcript": "大丈夫よまあこんなことになるんじゃないかと思っていたわ"
+  },
+  "eris_avl_191": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "说话者以平淡的语调说出“どうでもいいわ”，表示对某事漠不关心或不感兴趣。",
+    "transcript": "どうってどうでもいいわ"
+  },
+  "eris_avl_192": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "说话者带着一种失落和孤单的语气，并表达了自己一个人处境的无助感。",
+    "transcript": "ルーデウス、私一人になっちゃった。"
+  },
+  "eris_avl_193": {
+    "emotion": "happy",
+    "confidence": 0.8,
+    "reason": "说话者用轻快明朗的语调分享了自己15岁的生日，语气中透露出喜悦。",
+    "transcript": "それでね、私この間15歳になったの"
+  },
+  "eris_avl_194": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "语气柔和，带着一点不在意的随性，传递出一种不强求、随缘的态度。",
+    "transcript": "前に約束したじゃないどっちでも構わないわ"
+  },
+  "eris_avl_195": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "语气带着一丝不确定和自问自答，显示出对自身感受的意外。",
+    "transcript": "これって興奮してるってことよね"
+  },
+  "eris_avl_196": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "说话语气平缓，没有明显的情绪波动，只是在陈述事实。",
+    "transcript": "ねえルーデウスお母様から習ったのだけど"
+  },
+  "eris_avl_197": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话者语气平淡，没有明显的情感波动，但稍带一点点害羞感。",
+    "transcript": "恥ずかしいから一回しか言わないわ"
+  },
+  "eris_avl_198": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "说话者用\"ニャン\"这个语气词，加上\"子猫が欲しい\"的愿望表达，显得非常开心和渴望。",
+    "transcript": "私、ルーデウスの子猫が欲しいニャン"
+  },
+  "eris_avl_199": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "语调柔和，语气安慰，表达了安心和关怀。",
+    "transcript": "大丈夫、もう夜明けよ"
+  },
+  "eris_avl_200": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "语调平缓，没有明显的情绪波动，听起来像是在陈述一个事实。",
+    "transcript": "でも毎日魔術の訓練だって隠さなくて"
+  },
+  "eris_avl_201": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "说话者用一种低沉、犹豫的语气，结合“死んじゃうなんて”（竟然会死）的表达，流露出强烈的悲伤和难以置信的情感。",
+    "transcript": "ルーデウスがいたからだからルーデウスが死んじゃうなんて私"
+  },
+  "eris_avl_202": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "这句话的语气平淡，没有明显的情感波动，听起来像是在陈述一个事实。",
+    "transcript": "何もいつもルイデウスに"
+  },
+  "eris_avl_203": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "说话者的话语中充满了对过去的回忆和对现状的失落，语气中透露着一丝伤感和无奈。",
+    "transcript": "頼ってばっかりでいつだって私たちのことを考えてくれていたのに"
+  },
+  "eris_avl_204": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "角色说“什么都还不了，我做了糟糕的事”，语气沉重，充满了懊悔和悲伤。",
+    "transcript": "何も返せない 酷いことをした"
+  },
+  "eris_avl_205": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "语音语调平缓，没有明显的情绪波动，根据文字内容表达了一种客观的观察。",
+    "transcript": "ルーデウスの手、私より小さかった。"
+  },
+  "eris_avl_206": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "讲话者以一种坚定而自信的语气宣告了未来的挑战，暗示了她对自身能力的把握。",
+    "transcript": "龍神を倒せるくらいになったら今度は私が"
+  },
+  "eris_avl_207": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者用非常肯定的语气，断言没有比鲁迪乌斯更强的魔法师，显示出强烈的自信。",
+    "transcript": "エリスよいやよルーデウスよりすごい魔術師なんていないわ"
+  },
+  "eris_avl_208": {
+    "emotion": "serious",
+    "confidence": 0.9,
+    "reason": "角色的语气和内容都表明她对在森林里过夜的可能性感到担忧，因此语气是认真的。",
+    "transcript": "森はダメよ 帰る頃には夜になる可能性が高いわ"
+  },
+  "eris_avl_209": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "语气自信坚定，表达了对鲁迪乌斯能力的信任。",
+    "transcript": "ルーデウスならできるわ私の先生よ"
+  },
+  "eris_avl_210": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "角色的语气平淡，没有明显的情感起伏，符合中性情绪的特点。",
+    "transcript": "デッドエンドのルイゼルド"
+  },
+  "eris_avl_211": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "角色的语气平静，没有明显的情感起伏，这表明她很可能处于中性情绪。",
+    "transcript": "よし私たちもここで解散ね"
+  },
+  "eris_avl_212": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话者语气平缓，内容是转述听闻的事情，没有强烈的情感色彩。",
+    "transcript": "まあそれは聞いた話で見てたわけじゃないんだけど"
+  },
+  "eris_avl_213": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话语气带着疑问和强调，明显是对对方的行踪感到惊讶，并急切地想分享某事。",
+    "transcript": "どこか行ってたなそれよりも聞いて"
+  },
+  "eris_avl_214": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话者语气平和，语速正常，没有明显的喜怒哀乐，听起来像是在陈述事实。",
+    "transcript": "あのね聞いてさっきゴブリンたちを"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "prompt_text": "森はダメよ 帰る頃には夜になる可能性が高いわ",
+  "prompt_language": "ja",
+  "text_language": "ja",
+  "speed": 1.0,
+  "gpt_model": "GPT_weights_v2Pro/eris-e50.ckpt",
+  "sovits_model": "SoVITS_weights_v2Pro/eris_e20_s1520.pth"
+}

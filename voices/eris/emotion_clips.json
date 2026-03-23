@@ -1,0 +1,1527 @@
+{
+  "eris_test_001": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，用词带有挑战性，表现出自信和不满。"
+  },
+  "eris_test_002": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的语气和语速表明她对眼前发生的事情感到惊讶和难以置信。"
+  },
+  "eris_test_003": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "说话语气平淡，没有明显的情感起伏，似乎在陈述事实或表明立场。"
+  },
+  "eris_test_004": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的语调急促，声音带着一丝颤抖，明显是对突发情况感到惊讶。"
+  },
+  "eris_test_005": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "说话的语气温柔而有耐心，带着一丝请求的意味。"
+  },
+  "eris_test_006": {
+    "emotion": "serious",
+    "confidence": 0.9,
+    "reason": "说话语气坚定，带有强调意味，表明了事情的重要性和不容置疑的态度。"
+  },
+  "eris_test_007": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "语调上扬，带有疑问的语气，显示出意外的情绪。"
+  },
+  "eris_test_008": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者在听到“魔法”一词后发出了明显的惊叹声，语调高昂且带有疑问。"
+  },
+  "eris_test_009": {
+    "emotion": "serious",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，内容关于“读写能力”，表明其态度是严肃认真的。"
+  },
+  "eris_test_010": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "说话者语气兴奋，语速较快，并且提到了“我的花火”，表达了喜悦之情。"
+  },
+  "eris_test_011": {
+    "emotion": "happy",
+    "confidence": 0.8,
+    "reason": "说话者用欢快的语气表达了喜悦和兴奋，特别是“哇”和“耶”的发音。"
+  },
+  "eris_test_012": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，语速较快，表现出一种不容置疑的自信。"
+  },
+  "eris_test_013": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "这句话语气语调急促，带有疑问和惊讶的色彩，明显是对对方的行为表示不解和意外。"
+  },
+  "eris_test_014": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者语气中带着疑问和难以置信，明显是感到惊讶。"
+  },
+  "eris_test_015": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者语气急促，声音较高，带有明显的惊叹感，似乎是对眼前发生的事情感到意外。"
+  },
+  "eris_test_016": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，描述了泰拉努斯强大且有12个下属，显示出一种自信和力量感。"
+  },
+  "eris_test_017": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色在描述一个突然发生的、有点夸张的动作，语调明显带着惊讶和一点点兴奋。"
+  },
+  "eris_test_018": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "说话的语气带着一丝颓丧和无奈，似乎对自己不擅长跳舞感到失落。"
+  },
+  "eris_test_019": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色在听到“我明白了”之后，对“格雷乌斯很厉害”这句话表现出了惊讶的情绪。"
+  },
+  "eris_test_020": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "说话者语气活泼，语速较快，带有兴奋和愉悦的感觉，表达了对某事的喜爱和赞同。"
+  },
+  "eris_test_021": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "语气中带着感恩和喜悦，表达了对帮助的真诚感谢。"
+  },
+  "eris_test_022": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者带着惊讶和难以置信的语气，似乎对鲁多乌斯的身世感到意外。"
+  },
+  "eris_test_023": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者语气急促，音调升高，带有明显的疑问和不可思议的语气，表明其惊讶的情绪。"
+  },
+  "eris_test_024": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者语气急促，音调升高，带有惊呼和质疑，明显是对某个事实感到意外。"
+  },
+  "eris_test_025": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的语气和音调突然升高，伴随着短暂的停顿，明显表达了惊讶的情绪。"
+  },
+  "eris_test_026": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "这句话表达了因为今天是特殊日子而感到高兴和特别的心情。"
+  },
+  "eris_test_027": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，表达了对未来充满信心，预见了露德维希的成长。"
+  },
+  "eris_test_028": {
+    "emotion": "gentle",
+    "confidence": 0.8,
+    "reason": "说话者语气轻柔，带有安抚和体谅的意味，像是要告诉对方自己也要去睡觉了。"
+  },
+  "eris_test_029": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "角色的语气平淡，没有明显的情感起伏，表达了日常的问候。"
+  },
+  "eris_test_030": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气肯定，充满自信地介绍说自己能展示最强的魔法。"
+  },
+  "eris_test_031": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的语气听起来很惊讶，因为她似乎对看不见的怪物存在感到意外。"
+  },
+  "eris_test_032": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，充满自信，表达了自己能够战斗的决心。"
+  },
+  "eris_test_033": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "说话者以一种略带傲慢的语气说自己是姐姐，表现出自信。"
+  },
+  "eris_test_034": {
+    "emotion": "surprised",
+    "confidence": 0.95,
+    "reason": "角色在音频的开头发出了短促的惊呼声，并伴随着语调的上升，表现出意外和惊讶的情绪。"
+  },
+  "eris_test_035": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的语调和速度表明她对所发生的事情感到惊讶和有些不知所措。"
+  },
+  "eris_test_036": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色发出了惊讶的叫声，并伴随着略带颤抖的语调，显示出极度的意外和不安。"
+  },
+  "eris_test_037": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色语气中带有疑问和不解，明显是对没有收到指令感到意外。"
+  },
+  "eris_test_038": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "说话者语气充满活力，表达了对即将到来的冒险的兴奋和期待。"
+  },
+  "eris_test_039": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "语气突然升高，声音带着惊叹和难以置信，明显是对眼前发生的突发情况感到惊讶。"
+  },
+  "eris_test_040": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话者语气中带着不确定和疑问，似乎对当前情况感到意外。"
+  },
+  "eris_test_041": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者在音频开头发出了惊叹的语气词“啊”，并且语气起伏较大，明显表达了惊讶的情绪。"
+  },
+  "eris_test_042": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的语调和词语表达了对即将到来的情况的震惊和一丝绝望。"
+  },
+  "eris_test_043": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者语气惊讶，似乎对某些事情感到意外。"
+  },
+  "eris_test_044": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "角色语气坚定，自信满满地表示想尽快见面。"
+  },
+  "eris_test_045": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "她语气中带有疑问和一点点的不安，明显是对突如其来的话感到惊讶。"
+  },
+  "eris_test_046": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话者在听到对方说“00:00 00:01 00:02”后，表达了惊讶并表示自己也要思考一下。"
+  },
+  "eris_test_047": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "声优语气中带着明显的疑问和意外，像是对即将发生的事情感到惊讶。"
+  },
+  "eris_test_048": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话语气平淡，没有明显的情绪波动，像是陈述事实。"
+  },
+  "eris_test_049": {
+    "emotion": "gentle",
+    "confidence": 0.8,
+    "reason": "说话者语气温柔，带有不易察觉的犹豫，可能在表达一种委婉的拒绝或请求。"
+  },
+  "eris_test_050": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "说话者语气温柔，带着一丝期待和恳求，流露出一种治愈和关怀的情感。"
+  },
+  "eris_test_051": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "说话者带有一种自责和无奈的语气，尤其是在说'为什么你要说谎'的时候，情绪明显低落。"
+  },
+  "eris_test_052": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者语气突然拔高，带有疑问和震惊的成分，表达了对某事的意外之情。"
+  },
+  "eris_test_053": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的声音语调和语速突然变化，带有惊讶的语气。"
+  },
+  "eris_test_054": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "说话语气温和，语速缓慢，透露出一种柔和的情感。"
+  },
+  "eris_test_055": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "语调平淡，没有明显的情绪起伏，表达的是一种客观的陈述。"
+  },
+  "eris_test_056": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "说话者语气温柔，表达了对某人的感激之情。"
+  },
+  "eris_test_057": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "角色的声音听起来非常温柔，并且带着一丝恳切，似乎在寻求帮助或指引。"
+  },
+  "eris_test_058": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "说话者语气轻快，带有兴奋和喜悦，表达了她在短短时间内取得的进步。"
+  },
+  "eris_test_059": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "The speaker's voice has a rising intonation and a slightly higher pitch, indicating astonishment."
+  },
+  "eris_test_060": {
+    "emotion": "serious",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，表达了必须离开的决心，暗示有重要的事情需要处理。"
+  },
+  "eris_test_061": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色发出了表示惊讶的语气词和声音，伴随着短暂的停顿。"
+  },
+  "eris_test_062": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的音调和语速表明她对某事感到惊讶。"
+  },
+  "eris_test_063": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "角色听到需要再次坐船的请求时，语气中充满了无奈和沮丧。"
+  },
+  "eris_test_064": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的语气和语速都非常快，并且带有一些疑问和难以置信的语调，显示出她对突发事件感到震惊和意外。"
+  },
+  "eris_test_065": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "她的语气中带着明显的惊讶和不敢相信，仿佛看到了意料之外的事情。"
+  },
+  "eris_test_066": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话者表现出惊讶的语气，并说“我不介意”和“我的肚子饿了”。"
+  },
+  "eris_test_067": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的声音中带有明显的惊讶和难以置信的语气，尤其是在开头几秒的呼吸和短促的发声中。"
+  },
+  "eris_test_068": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "角色的語氣聽起來非常沮喪和絕望，請求幫助的語調很明顯。"
+  },
+  "eris_test_069": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话者语气急促，带着一丝惊慌，明显是对情况感到意外。"
+  },
+  "eris_test_070": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话者在惊讶地表达自己第一次尝试某事却做得意外地好。"
+  },
+  "eris_test_071": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的语调和发音显示出明显的惊讶和难以置信。"
+  },
+  "eris_test_072": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "女角色的语调突然升高，伴随着惊讶的语气，表明她对某事感到意外。"
+  },
+  "eris_test_073": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "说话者语气低沉，带有明显的委屈和不解，表达了对某事的伤心和失望。"
+  },
+  "eris_test_074": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "她说话的语气自信且带着一丝自负，认为自己即使那样也仍然很漂亮。"
+  },
+  "eris_test_075": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色发出了表示惊讶的语调和语气词，像是没有预料到会发生某事。"
+  },
+  "eris_test_076": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "语气中的“诶”和“什么”以及语速的突然加快都表明了惊讶的情绪。"
+  },
+  "eris_test_077": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的語氣中帶有驚訝和不解，質疑對方為什麼這麼急迫。"
+  },
+  "eris_test_078": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，带有自信的鼓励，表示自己有能力解决问题。"
+  },
+  "eris_test_079": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色在听到“路易十六”和“买的东西”时，语调和停顿都显示出惊讶。"
+  },
+  "eris_test_080": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话的语气和停顿表明她对之前听到的话感到惊讶。"
+  },
+  "eris_test_081": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的语气和停顿显示出对“七星魔法”这个概念的惊讶和不确定。"
+  },
+  "eris_test_082": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "说话者语气温柔，安慰对方，表达关心。"
+  },
+  "eris_test_083": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "角色语气平静，没有明显的情绪起伏。"
+  },
+  "eris_test_084": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "说话者语气平淡，没有明显的情感起伏，表达了对预料之中的情况的接受。"
+  },
+  "eris_test_085": {
+    "emotion": "happy",
+    "confidence": 0.8,
+    "reason": "说话者语气轻松愉快，并且提到了生日，暗示了喜悦的情绪。"
+  },
+  "eris_test_086": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "角色的语气温柔而富有情感，带有明显的邀请和期盼，suggesting a tender and affectionate tone."
+  },
+  "eris_test_087": {
+    "emotion": "serious",
+    "confidence": 0.9,
+    "reason": "角色的语气带有强调和不满，表明正在严肃地提醒对方过去的承诺。"
+  },
+  "eris_test_088": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "说话者语气低沉，带有明显的叹息和无奈感，像是为自己的处境感到悲伤。"
+  },
+  "eris_test_089": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "说话者语气低沉，带着明显的犹豫和遗憾，表达了因“不熟悉”而无法说出口的复杂情感。"
+  },
+  "eris_test_090": {
+    "emotion": "gentle",
+    "confidence": 0.8,
+    "reason": "声线柔软，语气中带着渴望，表达了想要小猫的愿望。"
+  },
+  "eris_test_091": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "语调平稳，没有明显的情感起伏，听起来像是在陈述事实。"
+  },
+  "eris_test_092": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的语调和用词（“すごい の よ！”）明显表达了惊讶。"
+  },
+  "eris_test_093": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "角色的語氣低沉，帶有絕望感，表達了其無助和悲傷的情緒。"
+  },
+  "eris_test_094": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "说话者语气低沉，带着一丝无奈和失望，暗示了她所说的“每天魔法训练”背后隐藏的压力和不情愿。"
+  },
+  "eris_test_095": {
+    "emotion": "serious",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，带有警告意味，似乎在严肃地陈述一个事实或警告对方。"
+  },
+  "eris_test_096": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "说话者语气低沉，语速缓慢，充满了无助感和失落感，表达了“什么也做不了”的悲伤情绪。"
+  },
+  "eris_test_097": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "说话者带着明显的伤感和失望，回顾过去时充满了对信任被辜负的无奈。"
+  },
+  "eris_test_098": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话者以一种轻微的惊讶语气说出了“鲁鲁斯的‘手’，比我的‘手’还要小”，这表明了她对眼前所见事物感到意外。"
+  },
+  "eris_test_099": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "角色的语气带着一种挥之不去的悲伤和不舍，在告别时表达了对未来重逢的期盼，但隐藏不住离别的痛苦。"
+  },
+  "eris_test_100": {
+    "emotion": "serious",
+    "confidence": 0.9,
+    "reason": "说话语气坚定，带有一种决心和庄重感，表明正在进行一项重要的修行或任务。"
+  },
+  "eris_test_101": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的語氣突然變得又高又急，表示驚訝和懇求。"
+  },
+  "eris_test_102": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者语气惊讶，带有疑问的惊叹。"
+  },
+  "eris_test_103": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "语气非常兴奋，语速较快，带有明显的积极和喜悦的情绪。"
+  },
+  "eris_test_104": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "这句话充满了无奈和伤感，表达了说话者对某事的失望和无法接受。"
+  },
+  "eris_test_105": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "声调平稳，没有明显的情绪波动，听起来像是在陈述一个事实。"
+  },
+  "eris_test_106": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话者在描述一个数量上的意外增加，语气中带有惊讶的成分。"
+  },
+  "eris_test_107": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的语速较快，语气带有疑问和惊讶，似乎是对“拉普拉斯”这个词感到意外。"
+  },
+  "eris_test_108": {
+    "emotion": "surprised",
+    "confidence": 0.85,
+    "reason": "语气中带有惊讶和一点点急促，似乎对突然出现的情况感到意外。"
+  },
+  "eris_test_109": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话语气和内容都带有一种惊喜和不确定的感觉，像是对某件事情的发展感到意外。"
+  },
+  "eris_test_110": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "说话者语气低沉，带着叹息，表达了无法参加聚会或做某事的沮丧和无奈。"
+  },
+  "eris_test_111": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话者语气带着明显的惊讶和不敢置信，仿佛对某事感到意外。"
+  },
+  "eris_test_112": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "语气非常激动，语速也很快，并且有“おめでとう”的词语，明显是开心的情绪。"
+  },
+  "eris_test_113": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "说话者语气平缓，没有明显的情绪波动，听起来像是在陈述事实或提出一个普通的问题。"
+  },
+  "eris_test_114": {
+    "emotion": "surprised",
+    "confidence": 0.85,
+    "reason": "声调的突然升高和“诶”的语气表明了角色对眼前情况的惊讶。"
+  },
+  "eris_test_115": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "说话者带着快乐的声音说“生日快乐”，语调充满了喜悦。"
+  },
+  "eris_test_116": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "角色用温柔的语气表达了对他人孤独的关心，并主动提出陪伴过夜。"
+  },
+  "eris_test_117": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者发出了惊讶的语气词“ルーデウス”并伴随着短暂的停顿，随后又说“ちょっとくらい”，这表明他们对某事感到意外。"
+  },
+  "eris_test_118": {
+    "emotion": "surprised",
+    "confidence": 0.7,
+    "reason": "角色对露西娅5年后变化感到惊讶。"
+  },
+  "eris_test_119": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话者语气平淡，似乎在陈述事实或做出决定，没有明显的情感起伏。"
+  },
+  "eris_test_120": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的语气明显带有疑问和惊讶，尤其是在提到“看不见但知道有妖怪”的时候。"
+  },
+  "eris_test_121": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "她语气坚定， asserting 自己是姐姐，并且有能力战斗。"
+  },
+  "eris_test_122": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者语气急促，语调上扬，表达了对未能获得邀请的意外和困惑。"
+  },
+  "eris_test_123": {
+    "emotion": "happy",
+    "confidence": 0.8,
+    "reason": "说话者语气兴奋，表达了想要去打败怪物的愿望，充满活力。"
+  },
+  "eris_test_124": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的声音突然拔高，语速变快，并使用了“谁啊”、“什么”等感叹词，显示出惊讶的情绪。"
+  },
+  "eris_test_125": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的语调突然扬起，语气中带着疑问和难以置信，表明他对突如其来的指责感到惊讶。"
+  },
+  "eris_test_126": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "说话者语气热情洋溢，语速稍快，带有明显的兴奋感，表达了对某事的热爱和积极性。"
+  },
+  "eris_test_127": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "The speaker's tone is high-pitched and exclamatory, suggesting a sudden realization or shock."
+  },
+  "eris_test_128": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，表达了对尤德乌斯的信心和自己能力的肯定。"
+  },
+  "eris_test_129": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，充满自信，认为自己和对方可以凭一己之力完成某事。"
+  },
+  "eris_test_130": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的语调和停顿表明她对对手的实力感到惊讶。"
+  },
+  "eris_test_131": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，充满自信，暗示自己能够获胜。"
+  },
+  "eris_test_132": {
+    "emotion": "surprised",
+    "confidence": 0.85,
+    "reason": "角色的语调急促且音高升高，并且夹杂着惊呼声，明显表达了惊讶的情绪。"
+  },
+  "eris_test_133": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者语气急促，带有疑问和惊讶的成分，似乎对某事感到意外。"
+  },
+  "eris_test_134": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色在听到某事后，以一种略带疑惑和惊讶的语气问“为什么呀”。"
+  },
+  "eris_test_135": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "说话者以平静、无起伏的语气介绍了自己的名字，没有明显的情感波动。"
+  },
+  "eris_test_136": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话的语气和语调显示出她对提问感到意外和难以置信。"
+  },
+  "eris_test_137": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，带有自信地陈述自己的身份，暗示其能力和专业性。"
+  },
+  "eris_test_138": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "说话者带着一丝哽咽和沉重的语调，表达了不想离开但不得不离开的无奈和悲伤。"
+  },
+  "eris_test_139": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "语气急促，带有惊讶和一丝慌张。"
+  },
+  "eris_test_140": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的语调和用词表明她对某事感到意外和难以置信。"
+  },
+  "eris_test_141": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的语气急促，语调上扬，明显是对某事感到惊讶和难以置信。"
+  },
+  "eris_test_142": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色带着疑问的语气和惊讶的语气词“えっ”表达了意外和难以置信的情绪。"
+  },
+  "eris_test_143": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "语气中带有疑问和难以置信，明显是对突发情况感到惊讶。"
+  },
+  "eris_test_144": {
+    "emotion": "surprised",
+    "confidence": 0.85,
+    "reason": "角色的语气和语速显示出对所说内容的意外和惊讶。"
+  },
+  "eris_test_145": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "语气中带着惊讶和一丝质问，好像对某事感到意外。"
+  },
+  "eris_test_146": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "角色语气坚定，充满自信地告诉对方要去完成某事，并让对方留下。"
+  },
+  "eris_test_147": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "她惊呼\"怎么回事？\"，语气明显带着吃惊和困惑。"
+  },
+  "eris_test_148": {
+    "emotion": "surprised",
+    "confidence": 0.7,
+    "reason": "角色的語氣充滿驚訝，似乎對眼前的情況感到意外。"
+  },
+  "eris_test_149": {
+    "emotion": "surprised",
+    "confidence": 0.85,
+    "reason": "角色的语气和音调表明她对某事感到非常惊讶和困惑。"
+  },
+  "eris_test_150": {
+    "emotion": "neutral",
+    "confidence": 0.0,
+    "reason": "error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+  },
+  "eris_test_151": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "说话者用一种温和、安慰的语气，安抚对方不要担心。"
+  },
+  "eris_test_152": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "角色的语气听起来非常失落和绝望，似乎在陈述一个令人心碎的事实。"
+  },
+  "eris_test_153": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话的语气平缓，没有明显的情感波动，听起来像是在陈述事实或打招呼。"
+  },
+  "eris_test_154": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话者语气平淡，没有明显的情感波动，但内容暗示了预料之中的结果。"
+  },
+  "eris_test_155": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "说话的语气和内容都透露出一种喜悦和自豪，提到自己过生日并且长了一岁。"
+  },
+  "eris_test_156": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话者语气平缓，没有明显的情绪起伏，但带有一点思考的语气。"
+  },
+  "eris_test_157": {
+    "emotion": "neutral",
+    "confidence": 0.0,
+    "reason": "error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+  },
+  "eris_test_158": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "说话者语气温柔，语气柔和，带着一丝撒娇的意味，不像是严肃或悲伤的表达。"
+  },
+  "eris_test_159": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "角色的语调中带有明显的失落和无奈感，尤其是在说“但是你说不行”的时候。"
+  },
+  "eris_test_160": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "她说“好久不见，只说一次不行吗？”语气中带着失落和一丝哀怨。"
+  },
+  "eris_test_161": {
+    "emotion": "gentle",
+    "confidence": 0.8,
+    "reason": "说话语气温柔，带着一丝撒娇的意味，表达了对小猫的喜爱和渴望。"
+  },
+  "eris_test_162": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "角色的语气中带着一种无奈和失落感，明显表达了悲伤的情绪。"
+  },
+  "eris_test_163": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者带有惊讶的语气，强调了“だから”和“信じちゃう”。"
+  },
+  "eris_test_164": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "角色声音低沉，语速缓慢，并带有明显的沮丧感，表达了无能为力的情绪。"
+  },
+  "eris_test_165": {
+    "emotion": "surprised",
+    "confidence": 0.7,
+    "reason": "角色的语气中带有疑问和意外，听起来像是对某事感到惊讶。"
+  },
+  "eris_test_166": {
+    "emotion": "sad",
+    "confidence": 0.85,
+    "reason": "说话者带着一丝伤感和不舍，语气中透露着对离别的无奈。"
+  },
+  "eris_test_167": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "角色的语气显示出对自身能力的强烈自信，认为自己已经足够强大来击败敌人。"
+  },
+  "eris_test_168": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话者语气平淡，没有明显的情感波动，听起来像是在陈述事实或做出现实的判断。"
+  },
+  "eris_test_169": {
+    "emotion": "neutral",
+    "confidence": 0.0,
+    "reason": "error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+  },
+  "eris_test_170": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "角色的语气充满自信，似乎对自己能做到某事非常有把握。"
+  },
+  "eris_test_171": {
+    "emotion": "serious",
+    "confidence": 0.9,
+    "reason": "角色的语气坚定而肯定，表明她对存在其他冒险者有十足的把握，并可能暗示着一种策略或警惕。"
+  },
+  "eris_test_172": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "语气中的“啊”和“了”以及急促的语速表明了发现某物的惊喜情绪。"
+  },
+  "eris_test_173": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的语气和发声方式带有明显的惊叹和意外的情绪。"
+  },
+  "eris_test_174": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的语速和语气明显带有惊慌失措和意外的情绪。"
+  },
+  "eris_test_175": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话者提到“也”、“犹豫过”，语气略带惊讶和不确定。"
+  },
+  "eris_test_176": {
+    "emotion": "gentle",
+    "confidence": 0.8,
+    "reason": "说话者以一种温和的方式请求帮助，语气中带有期待。"
+  },
+  "eris_test_177": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的语气中带有惊讶和疑问，尤其是在听到“什么”的时候。"
+  },
+  "eris_test_178": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，表示自己已经准备好，并且有信心完成接下来的行动。"
+  },
+  "eris_test_179": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的语调突然升高，并带有急促的呼吸声，明显表达了对某事的惊讶。"
+  },
+  "eris_test_180": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，充满自信，认为自己比对方更能熟练地使用魔法。"
+  },
+  "eris_test_181": {
+    "emotion": "neutral",
+    "confidence": 0.0,
+    "reason": "error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+  },
+  "eris_test_182": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "说话者语气平淡，没有明显的情绪波动，更像是在陈述事实。"
+  },
+  "eris_test_183": {
+    "emotion": "neutral",
+    "confidence": 0.0,
+    "reason": "error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+  },
+  "eris_test_184": {
+    "emotion": "neutral",
+    "confidence": 0.0,
+    "reason": "error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+  },
+  "eris_test_185": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的语调急促，语气中带有疑问和不解，明显是对某事感到意外。"
+  },
+  "eris_test_186": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，充满自信，并且带有威胁的意味，表示自己会报复。"
+  },
+  "eris_test_187": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "语调和音量突然升高，伴随着急促的呼吸声，明显表达了惊讶和一丝惊慌。"
+  },
+  "eris_test_188": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "The speaker's tone and rapid questioning convey a sense of astonishment and disbelief."
+  },
+  "eris_test_189": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "语速较快，语气有起伏，表达了对之前说法是谎言的惊讶。"
+  },
+  "eris_test_190": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "语音中带有惊讶的语气词“な”和“啊”，以及表示反问的“じゃない”，语速稍快，表现出对对方提议的出乎意料。"
+  },
+  "eris_test_191": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的语调和音量突然升高，表达出惊讶和一丝质问。"
+  },
+  "eris_test_192": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "说话者语气平淡，没有明显的情感起伏，但带有一定的解释性意味。"
+  },
+  "eris_test_193": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话者用一种急促、略带疑问的语气提出要求，这表明她对即将发生的事情感到惊讶或难以置信。"
+  },
+  "eris_test_194": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "The speaker's tone is high-pitched and exclamatory, indicating surprise or disbelief."
+  },
+  "eris_test_195": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "角色的語氣興奮且充滿期待，特別是\"哇\"和\"大大的花\"的表達，顯示出喜悅的情緒。"
+  },
+  "eris_test_196": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话语气坚定，语速适中，表达了对情况的掌握和自信。"
+  },
+  "eris_test_197": {
+    "emotion": "neutral",
+    "confidence": 0.0,
+    "reason": "语气中的“什么”和“难看”明显带有不满和愤怒的情绪。"
+  },
+  "eris_test_198": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "说话者语气兴奋，带着自信的语气解释了一个简单的数学问题，显示出喜悦和满足感。"
+  },
+  "eris_test_199": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "角色的語氣充滿了自信，在介紹一位英雄的壯舉。"
+  },
+  "eris_test_200": {
+    "emotion": "serious",
+    "confidence": 0.9,
+    "reason": "说话者语气严肃，讨论的是“杀人”这样的话题，带有警告和告诫的意味。"
+  },
+  "eris_test_201": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的语气和语速表明他们感到惊讶，因为他们提到了“Terukius is super strong.”"
+  },
+  "eris_test_202": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的语调和叫声明显指示了望外的感受。"
+  },
+  "eris_test_203": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "说话者语气平淡，表达了对跳舞不必要的看法，没有明显的情绪波动。"
+  },
+  "eris_test_204": {
+    "emotion": "neutral",
+    "confidence": 0.0,
+    "reason": "error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+  },
+  "eris_test_205": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者在听到对方的“什么东西”后，发出了惊讶的“诶”以及后续的语气词，表达了出乎意料的情绪。"
+  },
+  "eris_test_206": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的语气带有明显的惊讶和意外，尤其是“啊”这个感叹词的使用。"
+  },
+  "eris_test_207": {
+    "emotion": "happy",
+    "confidence": 0.85,
+    "reason": "说话者语气欢快，表示对即将到来的生日派对充满期待和喜悦。"
+  },
+  "eris_test_208": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话者用了“んだと”、“思？”和“えっとね”等词语，表现出惊讶和思考的状态。"
+  },
+  "eris_test_209": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话者以一种停顿和不确定的方式表达了“我做不到”，这通常与惊讶或不敢相信有关。"
+  },
+  "eris_test_210": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "语气中的“啊”和“呢”以及轻微的停顿，都表明了惊讶的情绪。"
+  },
+  "eris_test_211": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的语调上扬，语速加快，表达了对“阿尔丰斯，零的东西”的意外和惊讶。"
+  },
+  "eris_test_212": {
+    "emotion": "gentle",
+    "confidence": 0.8,
+    "reason": "这段音频中角色的语气轻柔，语速平缓，带有抚慰人心的感觉，传达出温柔的情感。"
+  },
+  "eris_test_213": {
+    "emotion": "neutral",
+    "confidence": 0.0,
+    "reason": "error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"
+  },
+  "eris_test_214": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "说话者以一种宽容和体谅的语气表达了愿意原谅对方。"
+  },
+  "eris_test_215": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的语气和语速表明了对某事感到惊讶。"
+  },
+  "eris_test_216": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "角色的语气坚定且充满自信，似乎在向他人展示某件重要的事情。"
+  },
+  "eris_test_217": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "语调的升高和急促的节奏显示出一种惊讶和难以置信的情绪。"
+  },
+  "eris_test_218": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，表达了自己能够战斗的决心，并强调了自己作为姐姐的地位，显示出自信。"
+  },
+  "eris_test_219": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "女孩明显发出了惊呼声，语气带着难以置信和惊讶。"
+  },
+  "eris_test_220": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者的语调突然升高，语气急促，并使用了“你看你看”的感叹词，表现出惊讶的情绪。"
+  },
+  "eris_test_221": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的语调突然上扬，带有疑问的语气，显示出惊讶的情绪。"
+  },
+  "eris_test_222": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "女声说话语气轻柔，语速平缓，带有关切和安抚的意味。"
+  },
+  "eris_test_223": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的语气中带有明显的疑问和不确定，表达了对当前情况的惊讶。"
+  },
+  "eris_test_224": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色发出了一声突然的惊呼，语调急促且略带颤抖，表达了明显的惊讶。"
+  },
+  "eris_test_225": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色以一种向上扬起的语调和稍微夸张的语气表达了对刚才音乐的惊讶之情。"
+  },
+  "eris_test_226": {
+    "emotion": "serious",
+    "confidence": 0.8,
+    "reason": "角色的语气中带有抱怨和指责，表达了对对方不满的认真态度。"
+  },
+  "eris_test_227": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "语气中的 \"だって\" 和语速的加快表明了吃惊的情绪。"
+  },
+  "eris_test_228": {
+    "emotion": "neutral",
+    "confidence": 0.0,
+    "reason": "说话者语气激烈，带有明显的不满和指责，可以判断为愤怒的情绪。"
+  },
+  "eris_test_229": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "说话者语气带着哭腔，充满了委屈和无助感。"
+  },
+  "eris_test_230": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者语气中的疑问和对“陌生怪物”的反应显示出惊讶的情绪。"
+  },
+  "eris_test_231": {
+    "emotion": "surprised",
+    "confidence": 0.95,
+    "reason": "角色的语调高昂，伴随着吸气声，明显表达了惊讶或意外的情绪。"
+  },
+  "eris_test_232": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "角色的语气充满自信，挑战对手并且毫不畏惧。"
+  },
+  "eris_test_233": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "角色在表达想要追赶某人但似乎做不到时的无力感和沮丧。"
+  },
+  "eris_test_234": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "语调的突然抬高和“哎呀”的语气表达了角色的惊讶。"
+  },
+  "eris_test_235": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "说话者表示终于到达目的地，语气中带有如释重负和喜悦。"
+  },
+  "eris_test_236": {
+    "emotion": "gentle",
+    "confidence": 0.8,
+    "reason": "说话者语气温和，语速平缓，带有安慰和关怀的意味。"
+  },
+  "eris_test_237": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "说话者的语气低沉，带着明显的叹息，以及“怎么会这样”的疑问，表达了对现状的失望和无助。"
+  },
+  "eris_test_238": {
+    "emotion": "surprised",
+    "confidence": 0.85,
+    "reason": "角色在说“真是的，不知道呢”时，语气带有些许惊愕和不确定。"
+  },
+  "eris_test_239": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "角色的语气平淡，没有明显的情绪波动，只是在陈述自己的名字。"
+  },
+  "eris_test_240": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "角色的语气带着兴奋和喜悦，明显是对收到的礼物感到高兴。"
+  },
+  "eris_test_241": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "The speaker's voice has a high pitch and a drawn-out exclamation, suggesting a sudden realization or shock."
+  },
+  "eris_test_242": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "说话者语气轻柔，并带有愉悦的感叹，显示出对所描述事物的喜爱。"
+  },
+  "eris_test_243": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "角色的语气平淡，没有明显的情感起伏，听起来像是陈述事实。"
+  },
+  "eris_test_244": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "角色的语气平静，没有明显的情感起伏，是在陈述一个事实或观点。"
+  },
+  "eris_test_245": {
+    "emotion": "happy",
+    "confidence": 0.8,
+    "reason": "说话者语气轻快，充满了喜悦和期待。"
+  },
+  "eris_test_246": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "说话者在表达感激之情，语气中带着愉悦和满足。"
+  },
+  "eris_test_247": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "说话者语气温和，语速不快，带有请求的意味，给人一种柔和的感觉。"
+  },
+  "eris_test_248": {
+    "emotion": "serious",
+    "confidence": 0.8,
+    "reason": "说话者语气坚定，语速较快，强调了“极致”和“完全”填满，带有不容置疑的决心。"
+  },
+  "eris_test_249": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "说话者语气轻快，带有赞扬和喜悦，表达了孩子成长进步的开心。"
+  },
+  "eris_test_250": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的语气突然急促，带有惊讶和一丝质问的意味。"
+  },
+  "eris_test_251": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "角色的语气轻松愉快，带有撒娇的意味，表示即使只有一个（指戈布林）也没关系，因为她一个人就可以解决。"
+  },
+  "eris_test_252": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色语气中的“そんなはずない”和“なんで”表达了强烈的意外和不相信。"
+  },
+  "eris_test_253": {
+    "emotion": "surprised",
+    "confidence": 0.85,
+    "reason": "角色的语气中带着明显的惊讶和一丝赞叹，似乎是对某件事的发生感到意外。"
+  },
+  "eris_test_254": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话语气和语速都表现出惊讶的情绪。"
+  },
+  "eris_test_255": {
+    "emotion": "sad",
+    "confidence": 0.95,
+    "reason": "说话者语气低沉，充满疑问和失落感，显然是在表达悲伤。"
+  },
+  "eris_test_256": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "说话人语气委婉，带有无奈和遗憾的情绪，表达了“没办法”的感受。"
+  },
+  "eris_test_257": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话的语气平淡，没有明显的情绪波动，但语速稍快，显示出一定的决心。"
+  },
+  "eris_test_258": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者语气惊讶，语速稍快，似乎对眼前景象感到意外。"
+  },
+  "eris_test_259": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话者以平静的语气陈述事实，没有明显的情绪波动。"
+  },
+  "eris_test_260": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "The speaker's tone and inflection suggest surprise and mild disbelief upon recognizing someone."
+  },
+  "eris_test_261": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "语调陡峭，带有明显的疑问和不解，表达了对他人行为的惊讶。"
+  },
+  "eris_test_262": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，表达了对自己外表的自信。"
+  },
+  "eris_test_263": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的语调和惊讶的语气表明她对某事感到意外。"
+  },
+  "eris_test_264": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "语气中带着明显的惊讶和不解，表示对情况的意外。"
+  },
+  "eris_test_265": {
+    "emotion": "happy",
+    "confidence": 0.8,
+    "reason": "角色的语气听起来非常积极和充满活力，似乎对即将发生的事情感到兴奋。"
+  },
+  "eris_test_266": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话者语气急促，语调上扬，并伴有表示惊讶的感叹词，显示出惊讶的情绪。"
+  },
+  "eris_test_267": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "说话者在听到对方的话后，语气明显带有惊讶和不解。"
+  },
+  "eris_test_268": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者带有疑问的语气和上升的语调，表明他们对某件事感到惊讶。"
+  },
+  "eris_test_269": {
+    "emotion": "happy",
+    "confidence": 0.8,
+    "reason": "说话者带着一种兴奋和期待的情绪，似乎对即将到来的挑战感到高兴。"
+  },
+  "eris_test_270": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "说话者带着疑问和一些不确定，像是对某件事情感到意外。"
+  },
+  "eris_test_271": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的语气和发声方式带有明显的惊讶和不确定感，仿佛看到了意料之外的事情。"
+  },
+  "eris_test_272": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的语调突然升高，语速加快，表现出一种惊讶的情绪。"
+  },
+  "eris_test_273": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的语气急促，带有疑问和震惊，明显是对突发事件感到意外。"
+  },
+  "eris_test_274": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "讲话的语调平淡，没有明显的情绪起伏。"
+  },
+  "eris_test_275": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "说话者语气平稳，没有明显的情绪波动，表达了一种“没关系”的态度。"
+  },
+  "eris_test_276": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "说话者语气低沉，带有明显的叹息感，表达了一种无助或无奈的情绪。"
+  },
+  "eris_test_277": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色听到“路德斯”这个名字后，语气和节奏发生了明显的变化，表达了意外之情。"
+  },
+  "eris_test_278": {
+    "emotion": "happy",
+    "confidence": 0.8,
+    "reason": "说话者语气愉快，提到自己生日并且成为15岁，透露出兴奋和满足的情绪。"
+  },
+  "eris_test_279": {
+    "emotion": "gentle",
+    "confidence": 0.9,
+    "reason": "说话者语气温柔，带有撒娇的意味，似乎在提议和对方一起睡觉。"
+  },
+  "eris_test_280": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "角色的语气平淡，没有明显的情绪波动，表达的是一种确认和让步。"
+  },
+  "eris_test_281": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "女声带着轻微的疑问和惊讶，似乎对眼前发生的事情感到意外。"
+  },
+  "eris_test_282": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的语气和语速突然加快，带有一种被惊吓或意外的语调。"
+  },
+  "eris_test_283": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "说话者带着犹豫和遗憾的语气，表达了因为害羞而不愿多说的复杂情感。"
+  },
+  "eris_test_284": {
+    "emotion": "happy",
+    "confidence": 0.9,
+    "reason": "声线温柔，语气中带有期待和喜悦，表达了想要小猫的愿望。"
+  },
+  "eris_test_285": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "说话者带着一种失去和绝望的语气，句子结尾的颤抖暗示着悲伤。"
+  },
+  "eris_test_286": {
+    "emotion": "neutral",
+    "confidence": 0.8,
+    "reason": "说话者的语气平淡，没有明显的情绪波动，听起来像是在陈述事实。"
+  },
+  "eris_test_287": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "语气低沉，带着明显的失落和悲伤，特别是提到“死了”。"
+  },
+  "eris_test_288": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "说话者语气低沉，带着一丝绝望，表达了自己无能为力的感受。"
+  },
+  "eris_test_289": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "说话者在句末发出了叹息声，语气低沉，表达了一种失落和伤感的情绪。"
+  },
+  "eris_test_290": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "语气中带着失落和委屈，好像在抱怨对方的冷漠。"
+  },
+  "eris_test_291": {
+    "emotion": "sad",
+    "confidence": 0.9,
+    "reason": "角色以低沉的语气表达了遗憾和自责，充满了失落感。"
+  },
+  "eris_test_292": {
+    "emotion": "sad",
+    "confidence": 0.8,
+    "reason": "声线低沉，语速缓慢，透露出淡淡的忧伤和无力感。"
+  },
+  "eris_test_293": {
+    "emotion": "surprised",
+    "confidence": 0.9,
+    "reason": "角色的声音突然拔高，语调急促，明显表达了惊讶的情绪。"
+  },
+  "eris_test_294": {
+    "emotion": "confident",
+    "confidence": 0.8,
+    "reason": "说话者语气坚定，表现出一种不畏强敌的决心和自信。"
+  },
+  "eris_test_295": {
+    "emotion": "confident",
+    "confidence": 0.95,
+    "reason": "说话者语气坚定，自信地断言自己是世界上最强的魔法师。"
+  },
+  "eris_test_296": {
+    "emotion": "serious",
+    "confidence": 0.8,
+    "reason": "语气严肃，语速稍快，带有警告意味，表明事情的严重性。"
+  },
+  "eris_test_297": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，表达了对都铎王朝能够做到的确信。"
+  },
+  "eris_test_298": {
+    "emotion": "gentle",
+    "confidence": 0.8,
+    "reason": "说话语气柔和，带着一丝欣慰和关心，表明孩子平安无事让她感到安慰。"
+  },
+  "eris_test_299": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色发出了短促的惊呼声，语速和语气都显示出意外的情绪。"
+  },
+  "eris_test_300": {
+    "emotion": "confident",
+    "confidence": 0.9,
+    "reason": "说话者语气坚定，带有一种“我们走吧”的决心和自信。"
+  },
+  "eris_test_301": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的语气中带有惊讶的语气词和感叹声，表明她对某事感到意外。"
+  },
+  "eris_test_302": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色在說話時的語氣帶有驚訝的成分，尤其是在提到自己身材嬌小但卻獨自去過北極的時候。"
+  },
+  "eris_test_303": {
+    "emotion": "neutral",
+    "confidence": 0.9,
+    "reason": "说话者语气平淡，语速适中，没有明显的情感波动。"
+  },
+  "eris_test_304": {
+    "emotion": "happy",
+    "confidence": 0.8,
+    "reason": "角色语气中的兴奋和略带喘息的声音表明了她的愉悦和激动。"
+  },
+  "eris_test_305": {
+    "emotion": "surprised",
+    "confidence": 0.8,
+    "reason": "角色的語氣突然變得高昂，帶有驚訝和詢問的感覺。"
+  }
+}

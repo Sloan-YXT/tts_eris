@@ -1,0 +1,8 @@
+{
+  "prompt_text": "その何か言っててあのウォルステッドとか言うのが",
+  "prompt_language": "ja",
+  "text_language": "ja",
+  "speed": 1.0,
+  "gpt_model": "GPT_weights_v2Pro/eris-e50.ckpt",
+  "sovits_model": "SoVITS_weights_v2Pro/eris_e20_s1520.pth"
+}

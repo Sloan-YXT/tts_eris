@@ -9,7 +9,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import Response
 from pydantic import BaseModel, Field
 
-from .gpt_sovits_client import synthesize as gpt_synthesize
+from .gpt_sovits_client import synthesize as gpt_synthesize, switch_models
 from .voice_catalog import load_catalog
 
 
@@ -61,6 +61,11 @@ async def tts_post(request: TTSRequest):
     api_url = os.environ.get("GPT_SOVITS_API_URL", "http://127.0.0.1:9880")
 
     try:
+        gpt_model = cfg.get("gpt_model")
+        sovits_model = cfg.get("sovits_model")
+        if gpt_model or sovits_model:
+            await switch_models(gpt_model=gpt_model, sovits_model=sovits_model, api_url=api_url)
+
         wav_bytes = await gpt_synthesize(
             ref_audio_path=ref_path,
             prompt_text=prompt_text,

@@ -10,6 +10,24 @@ import httpx
 DEFAULT_API_URL = "http://127.0.0.1:9880"
 
 
+async def switch_models(
+    *,
+    gpt_model: str | None,
+    sovits_model: str | None,
+    api_url: str = DEFAULT_API_URL,
+    timeout: float = 30.0,
+) -> None:
+    """切换 GPT/SoVITS 权重（调用 api_v2 的 set_gpt_weights / set_sovits_weights）。"""
+    base = api_url.rstrip("/")
+    async with httpx.AsyncClient(timeout=timeout) as client:
+        if gpt_model:
+            resp = await client.get(f"{base}/set_gpt_weights", params={"weights_path": gpt_model})
+            resp.raise_for_status()
+        if sovits_model:
+            resp = await client.get(f"{base}/set_sovits_weights", params={"weights_path": sovits_model})
+            resp.raise_for_status()
+
+
 async def synthesize(
     *,
     ref_audio_path: str | Path,

@@ -11,7 +11,6 @@ Gemini 批量情绪标注脚本。
 """
 from __future__ import annotations
 
-import ast
 import json
 import re
 import shutil
@@ -19,25 +18,11 @@ import time
 import argparse
 from pathlib import Path
 
-# ── 情绪分类定义（修改此处即可调整分类体系）─────────────────────────────────────
-# 标签含义：
-#   neutral    - 平静、日常对话
-#   gentle     - 温柔、体贴、感激
-#   serious    - 严肃、认真、沉稳
-#   confident  - 自信、果断、傲娇式强势
-#   surprised  - 惊讶、困惑、疑问
-#   happy      - 开心、兴奋、雀跃
-#   sad        - 悲伤、遗憾、低落
-
-EMOTION_LABELS: list[str] = [
-    "neutral",
-    "gentle",
-    "serious",
-    "confident",
-    "surprised",
-    "happy",
-    "sad",
-]
+from shared import (
+    EMOTION_LABELS, SKIP_DIRS, MIN_TEXT_LEN,
+    SLICER_DIR, ASR_LIST, CLASSIFICATION_DIR, CLIPS_FILE,
+    load_credentials,
+)
 
 # 每类保留的音色数量上限（断点续跑后重新聚合时也使用此值）
 DEFAULT_TOP_N = 3
@@ -45,27 +30,11 @@ DEFAULT_TOP_N = 3
 # Gemini 请求间隔（秒），避免触发速率限制
 REQUEST_INTERVAL = 0.5
 
-# ── 路径配置 ──────────────────────────────────────────────────────────────────
-ROOT = Path(__file__).resolve().parent
-SLICER_DIR = ROOT / "GPT-SoVITS" / "output" / "slicer_opt"
-ASR_LIST = ROOT / "GPT-SoVITS" / "output" / "asr_opt" / "combined.list"
-CLASSIFICATION_DIR = ROOT / "classification"
-CLIPS_FILE = CLASSIFICATION_DIR / "emotion_clips.json"
 MAP_FILE = CLASSIFICATION_DIR / "emotion_map.json"
 LOWCUT_DIR = CLASSIFICATION_DIR / "lowcut"
-CREDENTIALS_FILE = ROOT / "credentials.txt"
-
-SKIP_DIRS = {"instruments", "skipped_empty_phoneme"}
-MIN_TEXT_LEN = 3
 
 
 # ── 工具函数 ──────────────────────────────────────────────────────────────────
-
-def load_credentials() -> dict:
-    if not CREDENTIALS_FILE.exists():
-        raise FileNotFoundError(f"credentials.txt 不存在：{CREDENTIALS_FILE}")
-    return ast.literal_eval(CREDENTIALS_FILE.read_text(encoding="utf-8"))
-
 
 def parse_json_response(text: str) -> dict:
     """从 Gemini 返回文本中提取 JSON，兼容带 markdown 代码块的情况。"""
@@ -289,13 +258,13 @@ def main() -> None:
 
     # 质量分布
     print("\n质量分布：")
-    q_counts: dict[int, int] = {i: 0 for i in range(1, 11)}
+    q_counts: dict[int, int] = {i: 0 for i in range(0, 11)}
     for ann in clips.values():
         q = ann.get("quality", 0)
-        if 1 <= q <= 10:
-            q_counts[q] += 1
-        else:
-            q_counts[1] = q_counts.get(1, 0) + 1
+        q = max(0, min(10, q))
+        q_counts[q] += 1
+    if q_counts[0]:
+        print(f"  Q= 0: {q_counts[0]:4d}  (error)")
     for score in range(10, 0, -1):
         bar = "#" * q_counts[score]
         print(f"  Q={score:2d}: {q_counts[score]:4d}  {bar}")

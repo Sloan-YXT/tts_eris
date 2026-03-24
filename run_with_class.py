@@ -23,6 +23,8 @@ _venv_py = ROOT / ".venv" / "Scripts" / "python.exe"
 if _venv_py.exists() and Path(sys.prefix).resolve() != _venv_py.parent.parent.resolve():
     os.execv(str(_venv_py), [str(_venv_py), __file__] + sys.argv[1:])
 
+from shared import EMOTION_LABELS
+
 # SBV2 需要从其目录运行
 SBV2_DIR = ROOT / "Style-BERT-VITS2"
 ASSETS_DIR = SBV2_DIR / "model_assets" / "eris"
@@ -39,8 +41,6 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import Response
 from openai import OpenAI
 from pydantic import BaseModel, Field
-
-EMOTION_LABELS = ["neutral", "gentle", "serious", "confident", "surprised", "happy", "sad"]
 
 EMOTION_PARAMS: dict[str, dict] = {
     "neutral":   {"sdp_ratio": 0.2, "noise": 0.6, "noise_w": 0.8, "length": 1.1,  "style_weight": 1.0},
@@ -128,8 +128,11 @@ def _get_model():
     return _tts_model
 
 
-def _synthesize_sbv2(text: str, language: str, emotion: str) -> bytes:
+def _synthesize_sbv2(text: str, language: str, emotion: str,
+                     speed: float | None = None,
+                     style_weight: float | None = None) -> bytes:
     from style_bert_vits2.constants import Languages
+    import numpy as np
     import scipy.io.wavfile as wavfile
 
     lang_map = {"ja": Languages.JP, "jp": Languages.JP, "en": Languages.EN, "zh": Languages.ZH}
@@ -142,12 +145,23 @@ def _synthesize_sbv2(text: str, language: str, emotion: str) -> bytes:
         language=lang,
         speaker_id=0,
         style=emotion,
-        style_weight=params["style_weight"],
+        style_weight=style_weight if style_weight is not None else params["style_weight"],
         sdp_ratio=params["sdp_ratio"],
         noise=params["noise"],
         noise_w=params["noise_w"],
-        length=params["length"],
+        length=speed if speed is not None else params["length"],
     )
+
+    # 末尾淡出（50ms）+ 补静音（150ms），消除截断尖锐音
+    audio = audio.astype(np.float32)
+    fade_samples = int(sr * 0.05)
+    if len(audio) > fade_samples:
+        fade = np.linspace(1.0, 0.0, fade_samples, dtype=np.float32)
+        audio[-fade_samples:] *= fade
+    silence = np.zeros(int(sr * 0.15), dtype=np.float32)
+    audio = np.concatenate([audio, silence])
+    audio = np.clip(audio, -32768, 32767).astype(np.int16)
+
     buf = io.BytesIO()
     wavfile.write(buf, sr, audio)
     return buf.getvalue()
@@ -156,7 +170,8 @@ def _synthesize_sbv2(text: str, language: str, emotion: str) -> bytes:
 # ── GPT-SoVITS 合成 ──────────────────────────────────────────────────────────
 
 async def _synthesize_gsv(text: str, language: str, emotion: str,
-                          gsv_url: str, emotion_map: dict, catalog: dict) -> bytes:
+                          gsv_url: str, emotion_map: dict, catalog: dict,
+                          speed: float | None = None) -> bytes:
     candidates = emotion_map.get(emotion, emotion_map.get("neutral", []))
     if not candidates:
         raise ValueError(f"emotion_map 中无 {emotion} 对应的 voice_id")
@@ -173,7 +188,7 @@ async def _synthesize_gsv(text: str, language: str, emotion: str,
         "prompt_lang": cfg.get("prompt_language", "ja"),
         "text": text,
         "text_lang": language,
-        "speed_factor": float(cfg.get("speed", 1.0)),
+        "speed_factor": (1.0 / speed) if speed is not None else float(cfg.get("speed", 1.0)),
         "batch_size": 1,
         "media_type": "wav",
         "streaming_mode": False,
@@ -200,8 +215,13 @@ async def lifespan(app: FastAPI):
     cfg = load_config(ROOT / "run_with_class_config.txt")
     app.state.cfg = cfg
     app.state.backend = _BACKEND_MODE
+
+    ds_key = cfg.get("deepseek_api_key")
+    if not ds_key:
+        print("[ERROR] run_with_class_config.txt 缺少 deepseek_api_key")
+        sys.exit(1)
     app.state.ds_client = OpenAI(
-        api_key=cfg["deepseek_api_key"],
+        api_key=ds_key,
         base_url="https://api.deepseek.com",
     )
 
@@ -219,6 +239,9 @@ async def lifespan(app: FastAPI):
         from src.voice_catalog import load_catalog
         app.state.catalog = load_catalog()
         map_path = ROOT / "classification" / "emotion_map.json"
+        if not map_path.exists():
+            print(f"[ERROR] {map_path} 不存在，请先运行 class_annotate.py")
+            sys.exit(1)
         app.state.emotion_map = json.loads(map_path.read_text(encoding="utf-8"))
         gsv_url = cfg.get("gsv_api_url", "http://127.0.0.1:9880")
         print(f"后端: GPT-SoVITS ({gsv_url})")
@@ -235,21 +258,30 @@ class TTSRequest(BaseModel):
     text: str = Field(..., min_length=1)
     language: str = Field("ja", description="语言: ja/en/zh")
     emotion: str | None = Field(None, description="情绪标签；不填则由 DeepSeek 自动检测")
+    speed: float | None = Field(None, ge=0.5, le=2.0, description="语速（越大越慢，默认按情绪预设，参考 0.8-1.5）")
+    style_weight: float | None = Field(None, ge=0.0, le=5.0, description="风格强度（越大越夸张，默认 1.0，推荐 0.5-1.5）")
 
 
 @app.post("/tts")
 async def tts_post(request: TTSRequest):
-    return await _handle(request.text, request.language, request.emotion)
+    return await _handle(request.text, request.language, request.emotion,
+                         request.speed, request.style_weight)
 
 
 @app.get("/tts")
-async def tts_get(text: str = "", language: str = "ja", emotion: str = ""):
+async def tts_get(text: str = "", language: str = "ja", emotion: str = "",
+                  speed: float | None = None, style_weight: float | None = None):
     if not text:
         raise HTTPException(status_code=400, detail="需要 query 参数: text")
-    return await _handle(text, language, emotion or None)
+    if speed is not None:
+        speed = max(0.5, min(2.0, speed))
+    if style_weight is not None:
+        style_weight = max(0.0, min(5.0, style_weight))
+    return await _handle(text, language, emotion or None, speed, style_weight)
 
 
-async def _handle(text: str, language: str, emotion: str | None) -> Response:
+async def _handle(text: str, language: str, emotion: str | None,
+                  speed: float | None = None, style_weight: float | None = None) -> Response:
     text = text.strip()
     if not text:
         raise HTTPException(status_code=400, detail="text 不能为空")
@@ -275,11 +307,13 @@ async def _handle(text: str, language: str, emotion: str | None) -> Response:
     try:
         if app.state.backend == "sbv2":
             loop = asyncio.get_event_loop()
-            wav = await loop.run_in_executor(None, _synthesize_sbv2, text, language, emotion)
+            wav = await loop.run_in_executor(
+                None, _synthesize_sbv2, text, language, emotion, speed, style_weight)
         else:
             gsv_url = cfg.get("gsv_api_url", "http://127.0.0.1:9880")
             wav = await _synthesize_gsv(text, language, emotion,
-                                        gsv_url, app.state.emotion_map, app.state.catalog)
+                                        gsv_url, app.state.emotion_map, app.state.catalog,
+                                        speed)
     except httpx.ConnectError:
         raise HTTPException(status_code=503, detail="无法连接 GPT-SoVITS，请确认 api_v2.py 已启动")
     except httpx.HTTPStatusError as e:

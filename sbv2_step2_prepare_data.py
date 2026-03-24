@@ -14,19 +14,14 @@ Step 2: 从 GPT-SoVITS 切片 + ASR 标注整理为 Style-BERT-VITS2 训练格�
 """
 from __future__ import annotations
 
-import ast
 import json
 import shutil
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
-GSV_DIR = ROOT / "GPT-SoVITS"
-SLICER_DIR = GSV_DIR / "output" / "slicer_opt"
-ASR_LIST = GSV_DIR / "output" / "asr_opt" / "combined.list"
-CLIPS_FILE = ROOT / "classification" / "emotion_clips.json"
-CREDENTIALS_FILE = ROOT / "credentials.txt"
+from shared import (
+    SKIP_DIRS, MIN_TEXT_LEN, SLICER_DIR, ASR_LIST, CLIPS_FILE, SBV2_DIR,
+    get_min_quality,
+)
 
-SBV2_DIR = ROOT / "Style-BERT-VITS2"
 DATA_DIR = SBV2_DIR / "Data" / "eris"
 RAW_DIR = DATA_DIR / "raw"
 ESD_FILE = DATA_DIR / "esd.list"
@@ -34,18 +29,9 @@ ESD_FILE = DATA_DIR / "esd.list"
 SPEAKER = "eris"
 LANG = "JP"
 
-# 跳过的子目录
-SKIP_DIRS = {"instruments", "skipped_empty_phoneme"}
-# 最短台词字数
-MIN_TEXT_LEN = 3
-
 
 def main() -> None:
-    # 从配置文件读取质量阈值
-    min_quality = 6
-    if CREDENTIALS_FILE.exists():
-        creds = ast.literal_eval(CREDENTIALS_FILE.read_text(encoding="utf-8"))
-        min_quality = int(creds.get("min_quality", 6))
+    min_quality = get_min_quality()
 
     # 清理旧数据
     if RAW_DIR.exists():
@@ -95,6 +81,7 @@ def main() -> None:
         print("质量评分: 无（跳过质量过滤）")
 
     lines: list[str] = []
+    clip_map: dict[str, str] = {}  # 0001.wav → clip_id
     copied = 0
     skipped_no_text = 0
     skipped_short = 0
@@ -116,9 +103,11 @@ def main() -> None:
                 skipped_short += 1
                 continue
 
-            # 质量过滤（clip_id = 子目录/stem）
+            # clip_id = 子目录/stem
+            clip_id = f"{subdir.name}/{wav_path.stem}"
+
+            # 质量过滤
             if quality_map:
-                clip_id = f"{subdir.name}/{wav_path.stem}"
                 quality = quality_map.get(clip_id, 10)  # 无评分默认保留
                 if quality < min_quality:
                     skipped_quality += 1
@@ -132,12 +121,17 @@ def main() -> None:
 
             # esd.list 格式: Data/eris/wavs/文件名|说话人|语言|台词
             lines.append(f"Data/eris/wavs/{dst_name}|{SPEAKER}|{LANG}|{text}")
+            clip_map[dst_name] = clip_id
             copied += 1
             sub_count += 1
 
         print(f"  {subdir.name}/: {sub_count} 条")
 
     ESD_FILE.write_text("\n".join(lines), encoding="utf-8")
+
+    # 输出序号 → clip_id 映射（供多风格步骤使用）
+    clip_map_file = DATA_DIR / "clip_map.json"
+    clip_map_file.write_text(json.dumps(clip_map, ensure_ascii=False, indent=2), encoding="utf-8")
 
     print(f"\n数据准备完成：")
     print(f"  音频文件: {copied} 个 -> {RAW_DIR}")

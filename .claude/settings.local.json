@@ -13,7 +13,12 @@
       "Bash(python -c \"import json; d=json.load\\(open\\(''f:/programs/python/play/python/tts/tts_eris/classification/emotion_clips.json'',''r'',encoding=''utf-8''\\)\\); print\\(f''{len\\(d\\)} 条标注''\\)\")",
       "Bash(python -c \":*)",
       "Bash(ls -lt f:/programs/python/play/python/tts/tts_eris/Style-BERT-VITS2/model_assets/eris/*.safetensors)",
-      "Bash(ls \"f:/programs/python/play/python/tts/tts_eris/Style-BERT-VITS2/model_assets/eris_v1_neutral/\"*.safetensors)"
+      "Bash(ls \"f:/programs/python/play/python/tts/tts_eris/Style-BERT-VITS2/model_assets/eris_v1_neutral/\"*.safetensors)",
+      "Bash(python -c \"import shared; print\\(''shared OK''\\)\")",
+      "Bash(python -c \"from class_annotate import EMOTION_LABELS, load_asr_map; print\\(''class_annotate OK''\\)\")",
+      "Bash(python -c \"from sbv2_step2_prepare_data import main; print\\(''step2 OK''\\)\")",
+      "Bash(python -c \"from sbv2_multistyle_step1_prep import EMOTIONS; print\\(f''step1 OK, {len\\(EMOTIONS\\)} emotions''\\)\")",
+      "Bash(.venv/Scripts/python -c \":*)"
     ]
   }
 }

@@ -15,14 +15,13 @@ import shutil
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
-SBV2_DIR = ROOT / "Style-BERT-VITS2"
+from shared import EMOTION_LABELS, CLIPS_FILE, SBV2_DIR
+
 DATA_DIR = SBV2_DIR / "Data" / "eris"
 WAVS_DIR = DATA_DIR / "wavs"
 ASSETS_DIR = SBV2_DIR / "model_assets"
-CLIPS_FILE = ROOT / "classification" / "emotion_clips.json"
 
-EMOTIONS = ["neutral", "gentle", "serious", "confident", "surprised", "happy", "sad"]
+EMOTIONS = EMOTION_LABELS
 
 
 def backup_model() -> None:
@@ -37,34 +36,18 @@ def backup_model() -> None:
 
 
 def build_wav_to_emotion(clips: dict) -> dict[str, str]:
-    """从 emotion_clips.json 建立 wav 文件名（0001.wav）→ 情绪 映射。
-
-    clips 的 key 是 clip_id（子目录/stem 格式，如 "1/vocal_eris_full..._0000148480"），
-    但 wavs/ 下的文件名是 sbv2_step2_prepare_data.py 生成的序号（如 "0001.wav"）。
-    通过 esd.list 建立序号 → clip_id 的反向映射来关联。
-    """
-    # 读 esd.list 获取 wav 文件名 → 台词 映射
-    esd_path = DATA_DIR / "esd.list"
-    if not esd_path.exists():
+    """从 clip_map.json + emotion_clips.json 建立 wav 文件名（0001.wav）→ 情绪 映射。"""
+    clip_map_file = DATA_DIR / "clip_map.json"
+    if not clip_map_file.exists():
+        print("  [WARN] clip_map.json 不存在，无法映射情绪")
         return {}
 
-    # clip_id 的台词 → clip_id 映射（用台词做中间桥梁）
-    transcript_to_clip: dict[str, str] = {}
-    for clip_id, ann in clips.items():
-        t = ann.get("transcript", "").strip()
-        if t:
-            transcript_to_clip[t] = clip_id
+    # clip_map: {"0001.wav": "1/vocal_eris_full..._0000148480", ...}
+    clip_map = json.loads(clip_map_file.read_text(encoding="utf-8"))
 
-    # esd.list: Data/eris/wavs/0001.wav|eris|JP|台词
     wav_to_emotion: dict[str, str] = {}
-    for line in esd_path.read_text(encoding="utf-8").splitlines():
-        parts = line.split("|")
-        if len(parts) < 4:
-            continue
-        wav_name = Path(parts[0]).name  # 0001.wav
-        transcript = parts[3].strip()
-        clip_id = transcript_to_clip.get(transcript)
-        if clip_id and clip_id in clips:
+    for wav_name, clip_id in clip_map.items():
+        if clip_id in clips:
             wav_to_emotion[wav_name] = clips[clip_id]["emotion"]
 
     return wav_to_emotion
@@ -147,6 +130,9 @@ def regenerate_esd_list() -> int:
             rel_path = wav.relative_to(SBV2_DIR).as_posix()
             lines.append(f"{rel_path}|eris|JP|{transcript}")
 
+    if not lines:
+        print("  [FAIL] esd.list 为空，无有效数据")
+        sys.exit(1)
     esd_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"  已生成 esd.list: {len(lines)} 条")
     return len(lines)

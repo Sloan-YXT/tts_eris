@@ -64,6 +64,9 @@ def create_config() -> None:
     config["train"]["eval_interval"] = eval_interval
     config["train"]["bf16_run"] = True
 
+    if n_samples == 0:
+        print("[FAIL] raw/ 目录为空，无音频数据")
+        sys.exit(1)
     print(f"  数据量: {n_samples} 条 → batch_size={batch_size}, epochs={epochs}")
 
     dst.write_text(json.dumps(config, ensure_ascii=False, indent=2), encoding="utf-8")

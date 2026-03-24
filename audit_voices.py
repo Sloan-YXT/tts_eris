@@ -25,14 +25,11 @@ if _venv_py.exists() and Path(sys.prefix).resolve() != _venv_py.parent.parent.re
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
-import json
 import numpy as np
 import librosa
 import torch
 
-SLICER_DIR = ROOT / "GPT-SoVITS" / "output" / "slicer_opt"
-ASR_LIST = ROOT / "GPT-SoVITS" / "output" / "asr_opt" / "combined.list"
-SKIP_DIRS = {"instruments", "skipped_empty_phoneme"}
+from shared import SLICER_DIR, ASR_LIST, SKIP_DIRS
 
 # ── 阈值（宽松标准，只抓明显有问题的） ─────────────────────────────
 MIN_DURATION = 0.8    # 秒，太短的片段

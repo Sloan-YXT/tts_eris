@@ -166,7 +166,7 @@ def main() -> None:
     else:
         print(f"  模型目录不存在: {model_dir}")
 
-    print(f"\n下一步：运行 sbv2_step5_style_gen.py 生成风格向量")
+    print(f"\n下一步：运行 python run_with_class.py 启动 TTS 服务")
 
 
 if __name__ == "__main__":

@@ -131,7 +131,8 @@ def merge_lists():
 def preflight():
     banner("前置检查")
     check_file(INP_TEXT,     "标注文件")
-    check_file(INP_WAV_DIR,  "音频目录")
+    if INP_WAV_DIR:
+        check_file(INP_WAV_DIR,  "音频目录")
     check_file(BERT_DIR,     "BERT 预训练模型")
     check_file(HUBERT_DIR,   "HuBERT 预训练模型")
     check_file(SV_PATH,      "SV 预训练模型")

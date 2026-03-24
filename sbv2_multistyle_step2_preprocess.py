@@ -27,6 +27,9 @@ def main() -> None:
     esd_path = DATA_DIR / "esd.list"
     lines = esd_path.read_text(encoding="utf-8").strip().splitlines()
     print(f"\nesd.list: {len(lines)} 条")
+    if not lines:
+        print("[FAIL] esd.list 为空")
+        sys.exit(1)
     print(f"示例: {lines[0][:80]}...")
 
     # 运行 preprocess_text.py (从 SBV2_DIR 运行)
@@ -58,7 +61,11 @@ def main() -> None:
     print(f"  train.list: {train_n} 条")
     print(f"  val.list:   {val_n} 条")
 
-    if train_list.exists():
+    if train_n == 0:
+        print("[FAIL] train.list 为空，无法继续训练")
+        sys.exit(1)
+
+    if train_list.exists() and train_n > 0:
         sample = train_list.read_text(encoding="utf-8").splitlines()[0]
         print(f"  示例: {sample[:100]}...")
 

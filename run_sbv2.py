@@ -95,6 +95,16 @@ def _synthesize(text: str, style: str, style_weight: float, language: str,
         length=length,
     )
 
+    # 末尾淡出（50ms）+ 补静音（150ms），消除截断尖锐音
+    audio = audio.astype(np.float32)
+    fade_samples = int(sr * 0.05)
+    if len(audio) > fade_samples:
+        fade = np.linspace(1.0, 0.0, fade_samples, dtype=np.float32)
+        audio[-fade_samples:] *= fade
+    silence = np.zeros(int(sr * 0.15), dtype=np.float32)
+    audio = np.concatenate([audio, silence])
+    audio = np.clip(audio, -32768, 32767).astype(np.int16)
+
     buf = io.BytesIO()
     wavfile.write(buf, sr, audio)
     return buf.getvalue()
@@ -164,10 +174,16 @@ async def tts_post(request: TTSRequest):
 
 
 @app.get("/tts")
-async def tts_get(text: str = "", language: str = "ja", style: str = "Neutral"):
+async def tts_get(text: str = "", language: str = "ja", style: str = "Neutral",
+                  speed: float | None = None, style_weight: float | None = None):
     if not text:
         raise HTTPException(status_code=400, detail="需要 query 参数: text")
-    return await tts_post(TTSRequest(text=text, language=language, style=style))
+    kwargs: dict = {"text": text, "language": language, "style": style}
+    if speed is not None:
+        kwargs["length"] = max(0.5, min(2.0, speed))
+    if style_weight is not None:
+        kwargs["style_weight"] = max(0.0, min(20.0, style_weight))
+    return await tts_post(TTSRequest(**kwargs))
 
 
 @app.get("/styles")

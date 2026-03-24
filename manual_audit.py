@@ -28,8 +28,7 @@ if _venv_py.exists() and Path(sys.prefix).resolve() != _venv_py.parent.parent.re
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
-SLICER_DIR = ROOT / "GPT-SoVITS" / "output" / "slicer_opt"
-ASR_LIST = ROOT / "GPT-SoVITS" / "output" / "asr_opt" / "combined.list"
+from shared import SLICER_DIR, ASR_LIST
 SUSPECTS_FILE = ROOT / "audit_suspects.txt"
 AUDIT_DIR = ROOT / "audit"
 
@@ -178,7 +177,7 @@ def step1_cleanup():
             else:
                 new_lines.append(line)
 
-        ASR_LIST.write_text("\n".join(new_lines), encoding="utf-8")
+        ASR_LIST.write_text("\n".join(new_lines) + "\n", encoding="utf-8")
         print(f"\ncombined.list: 删除 {removed_lines} 行（{len(original_lines)} → {len(new_lines)}）")
 
     print(f"\n清理完成: {recycled} 个 wav 移到回收站")

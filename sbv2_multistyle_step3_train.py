@@ -241,7 +241,7 @@ def main() -> None:
     else:
         print("  [WARN] 无导出模型")
 
-    print(f"\n下一步: 运行 sbv2_multistyle_step4_test.py 测试多风格推理")
+    print(f"\n下一步: 运行 python run_with_class.py 启动 TTS 服务")
 
 
 if __name__ == "__main__":

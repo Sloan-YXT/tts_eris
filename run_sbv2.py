@@ -74,6 +74,9 @@ def get_model():
     return _tts_model
 
 
+_SHORT_TEXT_THRESHOLD = 4
+
+
 def _synthesize(text: str, style: str, style_weight: float, language: str,
                 sdp_ratio: float, noise: float, noise_w: float, length: float) -> bytes:
     """同步合成，返回 WAV 字节。"""
@@ -83,25 +86,27 @@ def _synthesize(text: str, style: str, style_weight: float, language: str,
     lang = lang_map.get(language.lower(), Languages.JP)
 
     model = get_model()
+
+    # 极短文本降低随机性，让生成更稳定
+    if len(text) <= _SHORT_TEXT_THRESHOLD:
+        sdp_ratio = min(sdp_ratio, 0.1)
+        noise = min(noise, 0.3)
+        noise_w = min(noise_w, 0.3)
+
     sr, audio = model.infer(
-        text=text,
-        language=lang,
-        speaker_id=0,
-        style=style,
-        style_weight=style_weight,
-        sdp_ratio=sdp_ratio,
-        noise=noise,
-        noise_w=noise_w,
-        length=length,
+        text=text, language=lang, speaker_id=0, style=style,
+        style_weight=style_weight, sdp_ratio=sdp_ratio,
+        noise=noise, noise_w=noise_w, length=length,
     )
 
-    # 末尾淡出（50ms）+ 补静音（150ms），消除截断尖锐音
+    # 末尾淡出 + 补静音，消除截断尖锐音（短音频跳过淡出）
     audio = audio.astype(np.float32)
-    fade_samples = int(sr * 0.05)
+    fade_ms, silence_ms = 80, 50
+    fade_samples = int(sr * fade_ms / 1000)
     if len(audio) > fade_samples:
-        fade = np.linspace(1.0, 0.0, fade_samples, dtype=np.float32)
+        fade = np.exp(-np.linspace(0, 5, fade_samples)).astype(np.float32)
         audio[-fade_samples:] *= fade
-    silence = np.zeros(int(sr * 0.15), dtype=np.float32)
+    silence = np.zeros(int(sr * silence_ms / 1000), dtype=np.float32)
     audio = np.concatenate([audio, silence])
     audio = np.clip(audio, -32768, 32767).astype(np.int16)
 
@@ -150,6 +155,7 @@ class TTSRequest(BaseModel):
     noise: float = Field(0.6, ge=0, le=2, description="噪声")
     noise_w: float = Field(0.8, ge=0, le=2, description="SDP 噪声")
     length: float = Field(1.0, ge=0.5, le=2.0, description="语速 (1.0=正常)")
+    speed: float | None = Field(None, ge=0.5, le=2.0, description="语速别名，优先于 length")
 
 
 @app.post("/tts")
@@ -158,13 +164,15 @@ async def tts_post(request: TTSRequest):
     if not text:
         raise HTTPException(status_code=400, detail="text 不能为空")
 
+    length = request.speed if request.speed is not None else request.length
+
     loop = asyncio.get_event_loop()
     try:
         wav_bytes = await loop.run_in_executor(
             None,
             _synthesize,
             text, request.style, request.style_weight, request.language,
-            request.sdp_ratio, request.noise, request.noise_w, request.length,
+            request.sdp_ratio, request.noise, request.noise_w, length,
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"合成失败: {e}")

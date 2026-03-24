@@ -128,6 +128,9 @@ def _get_model():
     return _tts_model
 
 
+_SHORT_TEXT_THRESHOLD = 4  # 字符数 ≤ 此值视为极短文本
+
+
 def _synthesize_sbv2(text: str, language: str, emotion: str,
                      speed: float | None = None,
                      style_weight: float | None = None) -> bytes:
@@ -138,27 +141,34 @@ def _synthesize_sbv2(text: str, language: str, emotion: str,
     lang_map = {"ja": Languages.JP, "jp": Languages.JP, "en": Languages.EN, "zh": Languages.ZH}
     lang = lang_map.get(language.lower(), Languages.JP)
     params = EMOTION_PARAMS.get(emotion, EMOTION_PARAMS["neutral"])
+    infer_length = speed if speed is not None else params["length"]
+    infer_sw = style_weight if style_weight is not None else params["style_weight"]
 
     model = _get_model()
+
+    # 极短文本降低随机性，让生成更稳定
+    sdp = params["sdp_ratio"]
+    noise = params["noise"]
+    noise_w = params["noise_w"]
+    if len(text) <= _SHORT_TEXT_THRESHOLD:
+        sdp = min(sdp, 0.1)
+        noise = min(noise, 0.3)
+        noise_w = min(noise_w, 0.3)
+
     sr, audio = model.infer(
-        text=text,
-        language=lang,
-        speaker_id=0,
-        style=emotion,
-        style_weight=style_weight if style_weight is not None else params["style_weight"],
-        sdp_ratio=params["sdp_ratio"],
-        noise=params["noise"],
-        noise_w=params["noise_w"],
-        length=speed if speed is not None else params["length"],
+        text=text, language=lang, speaker_id=0, style=emotion,
+        style_weight=infer_sw, sdp_ratio=sdp,
+        noise=noise, noise_w=noise_w, length=infer_length,
     )
 
-    # 末尾淡出（50ms）+ 补静音（150ms），消除截断尖锐音
+    # 末尾淡出 + 补静音，消除截断尖锐音（短音频跳过淡出）
     audio = audio.astype(np.float32)
-    fade_samples = int(sr * 0.05)
+    fade_ms, silence_ms = 80, 50
+    fade_samples = int(sr * fade_ms / 1000)
     if len(audio) > fade_samples:
-        fade = np.linspace(1.0, 0.0, fade_samples, dtype=np.float32)
+        fade = np.exp(-np.linspace(0, 5, fade_samples)).astype(np.float32)
         audio[-fade_samples:] *= fade
-    silence = np.zeros(int(sr * 0.15), dtype=np.float32)
+    silence = np.zeros(int(sr * silence_ms / 1000), dtype=np.float32)
     audio = np.concatenate([audio, silence])
     audio = np.clip(audio, -32768, 32767).astype(np.int16)
 

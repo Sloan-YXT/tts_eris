@@ -18,7 +18,21 @@
       "Bash(python -c \"from class_annotate import EMOTION_LABELS, load_asr_map; print\\(''class_annotate OK''\\)\")",
       "Bash(python -c \"from sbv2_step2_prepare_data import main; print\\(''step2 OK''\\)\")",
       "Bash(python -c \"from sbv2_multistyle_step1_prep import EMOTIONS; print\\(f''step1 OK, {len\\(EMOTIONS\\)} emotions''\\)\")",
-      "Bash(.venv/Scripts/python -c \":*)"
+      "Bash(.venv/Scripts/python -c \":*)",
+      "Bash(python -c \"import py_compile; py_compile.compile\\(''run_sbv2.py'', doraise=True\\); print\\(''run_sbv2.py OK''\\)\")",
+      "Bash(python -c \"import py_compile; py_compile.compile\\(''run_with_class.py'', doraise=True\\); print\\(''run_with_class.py OK''\\)\")",
+      "Bash(python -c \"import py_compile; py_compile.compile\\(''run.py'', doraise=True\\); print\\(''run.py OK''\\)\")",
+      "Read(//c/Users/Admin/.claude/projects/**)",
+      "Bash(findstr \"8092 8010\")",
+      "Bash(curl -s \"http://127.0.0.1:8092/health\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"http://127.0.0.1:8092/tts?text=テスト\")",
+      "Bash(curl -s \"http://127.0.0.1:8092/tts?text=テスト\")",
+      "Bash(curl -s -w \"\\\\n%{http_code}\" -X POST \"http://127.0.0.1:8092/tts\" -H \"Content-Type: application/json\" -d \"{\"\"text\"\": \"\"テスト\"\"}\" -o /tmp/tts_test.wav)",
+      "Bash(curl -s -X POST \"http://127.0.0.1:8092/tts\" -H \"Content-Type: application/json\" -d \"{\"\"text\"\": \"\"hello\"\"}\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"http://127.0.0.1:8092/tts?text=%E3%83%86%E3%82%B9%E3%83%88\")",
+      "Bash(findstr \"8092\")",
+      "Bash(netsh advfirewall:*)",
+      "Bash(curl -s -X POST \"http://127.0.0.1:8092/tts\" -H \"Content-Type: application/json\" -d \"{\"\"text\"\": \"\"来て\"\", \"\"emotion\"\": \"\"neutral\"\"}\")"
     ]
   }
 }

@@ -53,18 +53,39 @@ cd GPT-SoVITS
 
 ```bash
 python train_all.py           # 多风格训练（7 种情绪，需要 Gemini API）
-python train_all.py --basic   # 单风格训练（无需 Gemini API）
+python train_all.py --basic   # 单风格训练（音色更自然，推荐首次使用）
 ```
 
-**多风格训练**需要 `credentials.txt` 配置 Gemini API Key（自动情绪标注）：
+**训练标志：**
+
+| 标志 | 作用 |
+|------|------|
+| `--basic` | 单风格训练（所有数据训一个风格，音色更自然） |
+| `--force` | 清理已有 checkpoint，从头训练 |
+| `--reannotate` | 重新进行 Gemini 质量/情绪标注（忽略已有结果） |
+
+组合示例：
+
+```bash
+python train_all.py --basic              # 单风格，续训已有 checkpoint
+python train_all.py --basic --force      # 单风格，从头训练
+python train_all.py --force              # 多风格，从头训练
+python train_all.py --force --reannotate # 多风格，从头训练 + 重新标注
+```
+
+无 `--force` 时，若存在已有 checkpoint 则自动从断点续训（适用于训练中断恢复）。
+
+**质量过滤：** 所有模式都会调用 Gemini 对音频质量评分（1-10），低于阈值（`credentials.txt` 中 `min_quality`，默认 8）的切片自动排除。已评分的切片不会重复评分。
+
+**多风格训练**额外需要 `credentials.txt` 配置 Gemini API Key（自动情绪标注）：
 
 ```json
-{"gemini": {"api_key": "AIza...", "model": "models/gemini-2.5-flash-lite"}}
+{"gemini": {"api_key": "AIza...", "model": "models/gemini-2.5-flash-lite"}, "min_quality": 8}
 ```
 
-多风格自动完成 6 步：数据整理 → 预处理（重采样 + BERT 特征）→ Gemini 情绪标注 → 按情绪分组 → 多风格预处理 → 训练（~40 分钟）。
+多风格自动完成 6 步：Gemini 标注 → 数据整理 → 预处理（重采样 + BERT 特征）→ 按情绪分组 → 多风格预处理 → 训练（~40 分钟）。
 
-单风格（`--basic`）跳过情绪标注，只跑 3 步：数据整理 → 预处理 → 训练。
+单风格（`--basic`）4 步：Gemini 质量评分 → 数据整理 → 预处理 → 训练。
 
 ### 部署
 
@@ -76,6 +97,22 @@ python run_with_class.py           # 自动情绪检测，端口 8092
 两个服务独立运行，各自直接加载模型，无外部依赖。首次启动加载 BERT 模型约 2 分钟。
 
 `run_with_class.py` 需在 `run_with_class_config.txt` 中配置 `deepseek_api_key`。
+
+### 配置
+
+`run_with_class_config.txt`：
+
+```ini
+deepseek_api_key = sk-xxxxxxxx
+deepseek_model = deepseek-chat
+port = 8092
+sbv2_api_url = http://127.0.0.1:8010
+gsv_api_url = http://127.0.0.1:9880
+# SBV2 模型文件名（留空则自动选最新的）
+sbv2_model = eris_e60_s5880.safetensors
+# 纯净模式：忽略所有调音参数，只用模型默认值（单风格推荐开启）
+pure_mode = false
+```
 
 ### 请求
 
@@ -92,14 +129,27 @@ curl -X POST http://localhost:8092/tts \
   -d '{"text": "やったー！"}' \
   -o output.wav
 
-# 手动指定情绪
+# 手动指定情绪 + 可选参数
 curl -X POST http://localhost:8092/tts \
   -H "Content-Type: application/json" \
-  -d '{"text": "やったー！", "emotion": "happy"}' \
+  -d '{"text": "やったー！", "emotion": "happy", "speed": 1.0, "style_weight": 1.0}' \
   -o output.wav
+
+# GET 方式
+curl "http://localhost:8092/tts?text=hello&emotion=neutral" -o output.wav
 ```
 
-可用风格/情绪：`neutral`, `gentle`, `serious`, `confident`, `surprised`, `happy`, `sad`
+**API 参数：**
+
+| 参数 | 说明 | 默认 | 范围 |
+|------|------|------|------|
+| `text` | 合成文本（必填） | - | - |
+| `language` | 语言 | `ja` | `ja`/`en`/`zh` |
+| `emotion` | 情绪标签（不填则自动检测） | auto | `neutral`/`gentle`/`serious`/`confident`/`surprised`/`happy`/`sad` |
+| `speed` | 语速（越大越慢） | 按情绪预设 | 0.5 - 2.0 |
+| `style_weight` | 风格强度（越大越夸张） | 1.0 | 0.0 - 5.0 |
+
+> **纯净模式**（`pure_mode = true`）：忽略 emotion/speed/style_weight，只用模型默认参数。单风格训练后推荐开启，保持音色最自然。
 
 ---
 
@@ -174,24 +224,4 @@ curl -X POST http://localhost:8092/tts \
   -H "Content-Type: application/json" \
   -d '{"text": "やったー！"}' \
   -o output.wav
-```
-
----
-
-## 配置文件
-
-`run_with_class_config.txt`（情绪路由，两种模式共用）：
-
-```ini
-deepseek_api_key = sk-xxxxxxxx
-deepseek_model = deepseek-chat
-port = 8092
-sbv2_api_url = http://127.0.0.1:8010
-gsv_api_url = http://127.0.0.1:9880
-```
-
-`credentials.txt`（Gemini 情绪标注，仅 SBV2 训练时用）：
-
-```json
-{"gemini": {"api_key": "AIza...", "model": "models/gemini-2.5-flash-lite"}}
 ```

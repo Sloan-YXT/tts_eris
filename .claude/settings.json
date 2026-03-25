@@ -221,13 +221,18 @@
       "Bash(powershell -Command \"Add-Type -AssemblyName Microsoft.VisualBasic; [Microsoft.VisualBasic.FileIO.FileSystem]::DeleteFile\\(''F:\\\\programs\\\\python\\\\play\\\\python\\\\tts\\\\tts_eris\\\\_gsv_requirements_tmp.txt'', ''OnlyErrorDialogs'', ''SendToRecycleBin''\\)\")",
       "Bash(\"f:/programs/python/play/python/tts/tts_eris/.venv/Scripts/python.exe\" -c \"import librosa; import silero_vad; print\\(''ok''\\)\")",
       "Bash(\"f:/programs/python/play/python/tts/tts_eris/.venv/Scripts/python.exe\" -c \"import librosa; print\\(''librosa ok''\\)\")",
-      "Bash(ls -d f:/programs/python/play/python/tts/tts_eris/voices/eris_avl_*)"
+      "Bash(ls -d f:/programs/python/play/python/tts/tts_eris/voices/eris_avl_*)",
+      "Bash(python -c \"import json,sys; c=json.load\\(sys.stdin\\); print\\(f''''batch_size={c[\"\"train\"\"][\"\"batch_size\"\"]}, epochs={c[\"\"train\"\"][\"\"epochs\"\"]}, eval_interval={c[\"\"train\"\"][\"\"eval_interval\"\"]}''''\\)\")",
+      "Bash(grep -r \"unlink\\\\|rmtree.*models\\\\|清理.*checkpoint\" --include=*.py /f/programs/python/play/tts/tts_eris/)",
+      "Bash(ls -la /f/programs/python/play/tts/tts_eris/*.py)",
+      "Bash(ls \"f:/programs/python/play/tts/tts_eris/Style-BERT-VITS2/Data/eris/models/\"*.safetensors)"
     ],
     "additionalDirectories": [
       "D:\\miniconda3\\envs\\gpt-sovits\\conda-meta",
       "D:\\miniconda3\\envs\\gpt-sovits\\Lib\\site-packages",
       "\\tmp",
-      "f:\\programs\\python\\play\\python\\tts\\tts_eris\\Style-BERT-VITS2\\model_assets\\eris"
+      "f:\\programs\\python\\play\\python\\tts\\tts_eris\\Style-BERT-VITS2\\model_assets\\eris",
+      "f:\\programs\\python\\play\\tts\\tts_eris"
     ]
   }
 }

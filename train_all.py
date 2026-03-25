@@ -8,10 +8,11 @@
   4. 多风格模式需要 credentials.txt 中配置 Gemini API Key（情绪标注用）
 
 用法：
-  python train_all.py                  # 多风格训练（续跑已有标注）
-  python train_all.py --force          # 多风格训练（重新标注，忽略已有结果）
-  python train_all.py --basic          # 单风格训练（跳过情绪标注，无需 Gemini API）
-  python train_all.py --basic --force  # 单风格 + 重新标注
+  python train_all.py                          # 多风格训练（续训已有 checkpoint）
+  python train_all.py --force                  # 多风格训练（从头训练）
+  python train_all.py --basic                  # 单风格训练（续训已有 checkpoint）
+  python train_all.py --basic --force          # 单风格（从头训练）
+  python train_all.py --reannotate             # 重新质量/情绪标注（可与上述组合）
 """
 from __future__ import annotations
 
@@ -33,6 +34,7 @@ STEPS_MULTI = [
 ]
 
 STEPS_BASIC = [
+    ("Gemini 质量评分",                         "class_annotate.py"),
     ("数据准备: slicer_opt → SBV2 格式",        "sbv2_step2_prepare_data.py"),
     ("预处理: 重采样 + 文本 + BERT 特征",       "sbv2_step3_preprocess.py"),
     ("单风格训练",                              "sbv2_step4_train.py"),
@@ -49,8 +51,13 @@ def main() -> None:
     steps = STEPS_BASIC if basic else STEPS_MULTI
     mode = "单风格" if basic else "多风格"
     print(f"训练模式: {mode}")
+    _TRAIN_SCRIPTS = {"sbv2_step4_train.py", "sbv2_multistyle_step3_train.py"}
+    reannotate = "--reannotate" in sys.argv
+
     if force:
-        print("强制模式: 重新标注（忽略已有结果）")
+        print("强制模式: 从头训练（清理已有 checkpoint）")
+    if reannotate:
+        print("重新标注模式: 忽略已有标注结果")
 
     total = len(steps)
     for i, (label, script) in enumerate(steps, 1):
@@ -60,7 +67,9 @@ def main() -> None:
         print(f"{'=' * 60}\n")
 
         cmd = [PYTHON, str(ROOT / script)]
-        if force and script == "class_annotate.py":
+        if force and script in _TRAIN_SCRIPTS:
+            cmd.append("--force")
+        if reannotate and script == "class_annotate.py":
             cmd.append("--force")
         result = subprocess.run(cmd)
         if result.returncode != 0:

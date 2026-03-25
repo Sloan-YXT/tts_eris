@@ -131,25 +131,22 @@ if __name__ == "__main__":
 '''
 
 
-def prepare_model_dir() -> None:
-    """清理旧 checkpoint，复制预训练权重。"""
-    # 删除旧 .pth 文件（防止 resume 逻辑走错路径）
+def clean_checkpoints() -> None:
+    """[--force] 清理旧 checkpoint。"""
     for pth in MODEL_DIR.glob("*.pth"):
         pth.unlink()
-        print(f"    删除: {pth.name}")
-
-    # 删除旧 eval 目录
+        print(f"    [--force] 删除: {pth.name}")
     eval_dir = MODEL_DIR / "eval"
     if eval_dir.exists():
         shutil.rmtree(eval_dir)
-        print(f"    删除: eval/")
-
-    # 删除旧 tfevents
+        print("    [--force] 删除: eval/")
     for tf in MODEL_DIR.glob("events.out.*"):
         tf.unlink()
-        print(f"    删除: {tf.name}")
+        print(f"    [--force] 删除: {tf.name}")
 
-    # 复制预训练权重
+
+def ensure_pretrained_weights() -> None:
+    """确保预训练权重存在。"""
     for name in ["G_0.safetensors", "D_0.safetensors", "WD_0.safetensors"]:
         src = PRETRAINED_DIR / name
         dst = MODEL_DIR / name
@@ -175,6 +172,8 @@ def clean_old_exports() -> None:
 
 
 def main() -> None:
+    force = "--force" in sys.argv
+
     print(f"{'='*60}")
     print(f"  多风格训练 Step 3: 训练")
     print(f"{'='*60}")
@@ -182,11 +181,18 @@ def main() -> None:
     # 1. 准备模型目录
     print(f"\n[1/3] 准备模型目录...")
     MODEL_DIR.mkdir(parents=True, exist_ok=True)
-    prepare_model_dir()
+    if force:
+        clean_checkpoints()
+    elif list(MODEL_DIR.glob("G_*.pth")):
+        print("    发现已有 checkpoint，将从断点续训（使用 --force 可从头训练）")
+    ensure_pretrained_weights()
 
     # 2. 清理旧导出
     print(f"\n[2/3] 清理旧 model_assets 导出...")
-    clean_old_exports()
+    if force:
+        clean_old_exports()
+    else:
+        print("    跳过（非 --force 模式）")
 
     # 3. 写入 wrapper 并启动训练
     print(f"\n[3/3] 启动训练...")

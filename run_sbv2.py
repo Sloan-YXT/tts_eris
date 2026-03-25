@@ -55,16 +55,21 @@ def _find_model(assets_dir: Path) -> Path:
 # ── 全局模型（启动时加载）──────────────────────────────────────────────────────
 
 _tts_model = None
+_multi_style: bool = False
 
 
 def get_model():
-    global _tts_model
+    global _tts_model, _multi_style
     if _tts_model is None:
+        import json as _json
         from style_bert_vits2.tts_model import TTSModel
         model_path = _find_model(ASSETS_DIR)
         config_path = ASSETS_DIR / "config.json"
         style_vec_path = ASSETS_DIR / "style_vectors.npy"
-        print(f"加载模型: {model_path.name}")
+        cfg = _json.loads(config_path.read_text(encoding="utf-8"))
+        num_styles = cfg.get("data", {}).get("num_styles", 1)
+        _multi_style = num_styles > 1
+        print(f"加载模型: {model_path.name} ({'多风格' if _multi_style else '单风格'})")
         _tts_model = TTSModel(
             model_path=model_path,
             config_path=config_path,
@@ -93,8 +98,9 @@ def _synthesize(text: str, style: str, style_weight: float, language: str,
         noise = min(noise, 0.3)
         noise_w = min(noise_w, 0.3)
 
+    style_name = style if _multi_style else "Neutral"
     sr, audio = model.infer(
-        text=text, language=lang, speaker_id=0, style=style,
+        text=text, language=lang, speaker_id=0, style=style_name,
         style_weight=style_weight, sdp_ratio=sdp_ratio,
         noise=noise, noise_w=noise_w, length=length,
     )
@@ -119,8 +125,11 @@ def _synthesize(text: str, style: str, style_weight: float, language: str,
 
 from contextlib import asynccontextmanager
 
-def _load_config_model_name():
-    global _sbv2_model_name
+_pure_mode = False
+
+
+def _load_config():
+    global _sbv2_model_name, _pure_mode
     cfg_path = ROOT / "run_with_class_config.txt"
     if cfg_path.exists():
         for line in cfg_path.read_text(encoding="utf-8").splitlines():
@@ -128,14 +137,17 @@ def _load_config_model_name():
             if line.startswith("#") or "=" not in line:
                 continue
             k, _, v = line.partition("=")
-            if k.strip() == "sbv2_model" and v.strip():
-                _sbv2_model_name = v.strip()
-                break
+            k, v = k.strip(), v.strip()
+            if k == "sbv2_model" and v:
+                _sbv2_model_name = v
+            elif k == "pure_mode":
+                _pure_mode = v.lower() == "true"
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    _load_config_model_name()
+    _load_config()
+    print(f"纯净模式: {'开' if _pure_mode else '关'}")
     print("预加载 SBV2 模型...")
     loop = asyncio.get_event_loop()
     await loop.run_in_executor(None, get_model)
@@ -164,20 +176,28 @@ async def tts_post(request: TTSRequest):
     if not text:
         raise HTTPException(status_code=400, detail="text 不能为空")
 
-    length = request.speed if request.speed is not None else request.length
+    if _pure_mode:
+        # 纯净模式：忽略所有调音参数
+        style, style_weight, language = "Neutral", 1.0, request.language
+        sdp_ratio, noise, noise_w, length = 0.2, 0.6, 0.8, 1.0
+        print(f"[pure] {text!r}")
+    else:
+        style, style_weight, language = request.style, request.style_weight, request.language
+        sdp_ratio, noise, noise_w = request.sdp_ratio, request.noise, request.noise_w
+        length = request.speed if request.speed is not None else request.length
+        print(f"[tts] {text!r} ({language}, {style})")
 
     loop = asyncio.get_event_loop()
     try:
         wav_bytes = await loop.run_in_executor(
             None,
             _synthesize,
-            text, request.style, request.style_weight, request.language,
-            request.sdp_ratio, request.noise, request.noise_w, length,
+            text, style, style_weight, language,
+            sdp_ratio, noise, noise_w, length,
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"合成失败: {e}")
 
-    print(f"[tts] {text!r} ({request.language}, {request.style})")
     return Response(content=wav_bytes, media_type="audio/wav")
 
 

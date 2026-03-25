@@ -7,6 +7,7 @@ Step 4: Style-BERT-VITS2 JP-Extra 微调训练。
 from __future__ import annotations
 
 import os
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -15,6 +16,10 @@ ROOT = Path(__file__).resolve().parent
 SBV2_DIR = ROOT / "Style-BERT-VITS2"
 PYTHON = sys.executable
 MODEL_NAME = "eris"
+DATA_DIR = SBV2_DIR / "Data" / MODEL_NAME
+MODEL_DIR = DATA_DIR / "models"
+ASSETS_DIR = SBV2_DIR / "model_assets" / MODEL_NAME
+PRETRAINED_DIR = SBV2_DIR / "pretrained_jp_extra"
 
 # 单 GPU 训练 wrapper 脚本内容
 WRAPPER_CODE = r'''"""
@@ -125,9 +130,74 @@ if __name__ == "__main__":
 '''
 
 
+def export_single_style() -> None:
+    """训练后导出：生成单风格 style_vectors.npy + 更新 model_assets config.json。"""
+    import json
+    import numpy as np
+
+    # 1. 收集所有 .wav.npy，取平均作为 Neutral 风格向量
+    wavs_dir = DATA_DIR / "wavs"
+    npy_files = list(wavs_dir.glob("*.wav.npy"))
+    if not npy_files:
+        print("[WARN] 无 .wav.npy 文件，跳过 style_vectors 生成")
+        return
+
+    vectors = [np.load(f) for f in npy_files]
+    mean_vec = np.mean(vectors, axis=0)  # shape: (256,)
+    style_vectors = mean_vec.reshape(1, -1)  # shape: (1, 256)
+
+    ASSETS_DIR.mkdir(parents=True, exist_ok=True)
+    sv_path = ASSETS_DIR / "style_vectors.npy"
+    np.save(sv_path, style_vectors)
+    print(f"  style_vectors.npy: shape={style_vectors.shape} (单风格 Neutral)")
+
+    # 2. 更新 model_assets/eris/config.json
+    config_src = DATA_DIR / "config.json"
+    config_dst = ASSETS_DIR / "config.json"
+    if config_src.exists():
+        cfg = json.loads(config_src.read_text(encoding="utf-8"))
+    elif config_dst.exists():
+        cfg = json.loads(config_dst.read_text(encoding="utf-8"))
+    else:
+        print("[WARN] 无 config.json，跳过")
+        return
+
+    cfg.setdefault("data", {})
+    cfg["data"]["num_styles"] = 1
+    cfg["data"]["style2id"] = {"Neutral": 0}
+    config_dst.write_text(json.dumps(cfg, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"  config.json: num_styles=1, style2id={{Neutral: 0}}")
+
+
 def main() -> None:
+    force = "--force" in sys.argv
+
     wrapper = SBV2_DIR / "_train_single_gpu.py"
     wrapper.write_text(WRAPPER_CODE, encoding="utf-8")
+
+    # checkpoint 管理
+    MODEL_DIR.mkdir(parents=True, exist_ok=True)
+    if force:
+        old_ckpts = list(MODEL_DIR.glob("*.pth"))
+        old_events = list(MODEL_DIR.glob("events.out.*"))
+        eval_dir = MODEL_DIR / "eval"
+        if old_ckpts or old_events:
+            print(f"[--force] 清理旧 checkpoint: {len(old_ckpts)} .pth + {len(old_events)} events")
+            for f in old_ckpts + old_events:
+                f.unlink()
+        if eval_dir.exists():
+            shutil.rmtree(eval_dir)
+            print("[--force] 删除: eval/")
+    elif list(MODEL_DIR.glob("G_*.pth")):
+        print("发现已有 checkpoint，将从断点续训（使用 --force 可从头训练）")
+
+    # 确保预训练权重存在
+    for name in ["G_0.safetensors", "D_0.safetensors", "WD_0.safetensors"]:
+        src = PRETRAINED_DIR / name
+        dst = MODEL_DIR / name
+        if src.exists() and not dst.exists():
+            shutil.copy2(src, dst)
+            print(f"复制预训练: {name}")
 
     env = os.environ.copy()
     env["MASTER_ADDR"] = "127.0.0.1"
@@ -155,16 +225,14 @@ def main() -> None:
     print(f"{'='*60}")
 
     # 检查输出模型
-    model_dir = SBV2_DIR / "Data" / MODEL_NAME / "models"
-    if model_dir.exists():
-        models = sorted(model_dir.glob("G_*.safetensors"))
-        if models:
-            latest = models[-1]
-            print(f"  最新模型: {latest.name}")
-        else:
-            print("  未找到生成器模型文件")
+    exports = sorted(ASSETS_DIR.glob("eris_e*_s*.safetensors"), key=lambda p: p.stat().st_mtime)
+    if exports:
+        print(f"  最新导出: {exports[-1].name}")
     else:
-        print(f"  模型目录不存在: {model_dir}")
+        print("  [WARN] model_assets 中无导出模型")
+
+    # 生成单风格 style_vectors.npy + 更新 config.json
+    export_single_style()
 
     print(f"\n下一步：运行 python run_with_class.py 启动 TTS 服务")
 

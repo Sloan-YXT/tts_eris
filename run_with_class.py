@@ -43,13 +43,13 @@ from openai import OpenAI
 from pydantic import BaseModel, Field
 
 EMOTION_PARAMS: dict[str, dict] = {
-    "neutral":   {"sdp_ratio": 0.2, "noise": 0.6, "noise_w": 0.8, "length": 1.1,  "style_weight": 1.0},
-    "gentle":    {"sdp_ratio": 0.2, "noise": 0.4, "noise_w": 0.6, "length": 1.2,  "style_weight": 1.0},
-    "serious":   {"sdp_ratio": 0.1, "noise": 0.4, "noise_w": 0.4, "length": 1.1,  "style_weight": 1.0},
-    "confident": {"sdp_ratio": 0.3, "noise": 0.5, "noise_w": 0.7, "length": 1.05, "style_weight": 1.0},
-    "surprised": {"sdp_ratio": 0.5, "noise": 0.8, "noise_w": 1.0, "length": 1.0,  "style_weight": 1.0},
-    "happy":     {"sdp_ratio": 0.4, "noise": 0.7, "noise_w": 0.9, "length": 1.05, "style_weight": 1.0},
-    "sad":       {"sdp_ratio": 0.3, "noise": 0.5, "noise_w": 0.6, "length": 1.25, "style_weight": 1.0},
+    "neutral":   {"sdp_ratio": 0.2, "noise": 0.6, "noise_w": 0.8, "length": 1.0,  "style_weight": 1.0},
+    "gentle":    {"sdp_ratio": 0.2, "noise": 0.4, "noise_w": 0.6, "length": 1.05, "style_weight": 1.0},
+    "serious":   {"sdp_ratio": 0.1, "noise": 0.4, "noise_w": 0.4, "length": 1.0,  "style_weight": 1.0},
+    "confident": {"sdp_ratio": 0.3, "noise": 0.5, "noise_w": 0.7, "length": 1.0,  "style_weight": 1.0},
+    "surprised": {"sdp_ratio": 0.5, "noise": 0.8, "noise_w": 1.0, "length": 0.95, "style_weight": 1.0},
+    "happy":     {"sdp_ratio": 0.4, "noise": 0.7, "noise_w": 0.9, "length": 0.95, "style_weight": 1.0},
+    "sad":       {"sdp_ratio": 0.3, "noise": 0.5, "noise_w": 0.6, "length": 1.1,  "style_weight": 1.0},
 }
 
 
@@ -97,6 +97,7 @@ def detect_emotion(text: str, client: OpenAI, model: str) -> str:
 
 _tts_model = None
 _sbv2_model_name: str | None = None  # 从配置读取，None 则自动选最新
+_multi_style: bool = False  # 启动时根据 config.json 自动检测
 
 
 def _find_model(assets_dir: Path) -> Path:
@@ -112,13 +113,18 @@ def _find_model(assets_dir: Path) -> Path:
 
 
 def _get_model():
-    global _tts_model
+    global _tts_model, _multi_style
     if _tts_model is None:
+        import json as _json
         from style_bert_vits2.tts_model import TTSModel
         model_path = _find_model(ASSETS_DIR)
         config_path = ASSETS_DIR / "config.json"
         style_vec_path = ASSETS_DIR / "style_vectors.npy"
-        print(f"加载模型: {model_path.name}")
+        # 检测是否多风格
+        cfg = _json.loads(config_path.read_text(encoding="utf-8"))
+        num_styles = cfg.get("data", {}).get("num_styles", 1)
+        _multi_style = num_styles > 1
+        print(f"加载模型: {model_path.name} ({'多风格' if _multi_style else '单风格'})")
         _tts_model = TTSModel(
             model_path=model_path,
             config_path=config_path,
@@ -155,8 +161,10 @@ def _synthesize_sbv2(text: str, language: str, emotion: str,
         noise = min(noise, 0.3)
         noise_w = min(noise_w, 0.3)
 
+    # 单风格模型只有 Neutral；多风格模型用 emotion 做 style
+    style_name = emotion if _multi_style else "Neutral"
     sr, audio = model.infer(
-        text=text, language=lang, speaker_id=0, style=emotion,
+        text=text, language=lang, speaker_id=0, style=style_name,
         style_weight=infer_sw, sdp_ratio=sdp,
         noise=noise, noise_w=noise_w, length=infer_length,
     )
@@ -235,6 +243,9 @@ async def lifespan(app: FastAPI):
         base_url="https://api.deepseek.com",
     )
 
+    pure = cfg.get("pure_mode", "").lower() == "true"
+    print(f"纯净模式: {'开' if pure else '关'}")
+
     if _BACKEND_MODE == "sbv2":
         global _sbv2_model_name
         _sbv2_model_name = cfg.get("sbv2_model") or None
@@ -298,9 +309,15 @@ async def _handle(text: str, language: str, emotion: str | None,
 
     cfg: dict = app.state.cfg
     ds_client: OpenAI = app.state.ds_client
+    pure = cfg.get("pure_mode", "").lower() == "true"
 
-    # 情绪检测
-    if emotion:
+    if pure:
+        # 纯净模式：忽略所有调音参数，只用模型默认值
+        emotion = "neutral"
+        speed = None
+        style_weight = None
+        print(f"[pure]  {text!r}")
+    elif emotion:
         emotion = emotion.lower()
         if emotion not in EMOTION_PARAMS:
             raise HTTPException(status_code=400, detail=f"无效情绪: {emotion}，可选: {EMOTION_LABELS}")
@@ -346,7 +363,66 @@ async def health():
 
 # ── 启动 ──────────────────────────────────────────────────────────────────────
 
+def _kill_port(port: int) -> None:
+    """启动前自动杀掉占用端口的旧进程。"""
+    import socket
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        if s.connect_ex(("127.0.0.1", port)) != 0:
+            return  # 端口空闲
+    print(f"端口 {port} 被占用，尝试释放...")
+    import subprocess
+    result = subprocess.run(
+        ["netstat", "-ano"], capture_output=True, text=True)
+    for line in result.stdout.splitlines():
+        if f":{port}" in line and "LISTENING" in line:
+            pid = line.strip().split()[-1]
+            print(f"  杀掉 PID {pid}")
+            subprocess.run(["taskkill", "/PID", pid, "/F"],
+                           capture_output=True)
+    import time
+    for _ in range(10):
+        time.sleep(1)
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            if s.connect_ex(("127.0.0.1", port)) != 0:
+                print(f"  端口 {port} 已释放")
+                return
+    print(f"  [WARN] 端口 {port} 仍被占用")
+
+
 if __name__ == "__main__":
+    import logging
+    # 所有日志写入文件，崩溃时可查
+    _log_file = ROOT / "tts_service.log"
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s %(levelname)s %(message)s",
+        handlers=[
+            logging.FileHandler(_log_file, encoding="utf-8"),
+            logging.StreamHandler(),
+        ],
+    )
+    log = logging.getLogger("tts")
+
     cfg = load_config(ROOT / "run_with_class_config.txt")
     port = int(cfg.get("port", 8092))
-    uvicorn.run("run_with_class:app", host="0.0.0.0", port=port, reload=False)
+    _kill_port(port)
+
+    import atexit, signal
+
+    def _on_exit():
+        log.warning("进程退出")
+
+    def _on_signal(signum, frame):
+        log.warning(f"收到信号 {signum}，退出")
+        sys.exit(0)
+
+    atexit.register(_on_exit)
+    signal.signal(signal.SIGTERM, _on_signal)
+    signal.signal(signal.SIGINT, _on_signal)
+
+    log.info(f"启动 TTS 服务 port={port}")
+    try:
+        uvicorn.run("run_with_class:app", host="0.0.0.0", port=port, reload=False)
+    except Exception as e:
+        log.exception(f"服务异常退出: {e}")
+        raise
